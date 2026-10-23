@@ -123,11 +123,18 @@
             -webkit-tap-highlight-color: transparent;
         }
 
+        html, body {
+            overflow-x: hidden;
+            max-width: 100vw;
+            width: 100%;
+        }
+
         body {
             background-color: var(--bg);
             color: var(--text);
             line-height: 1.6;
             transition: background-color 0.3s ease, color 0.3s ease;
+            position: relative;
         }
 
         body.landing-lock {
@@ -1130,30 +1137,56 @@
             display: flex;
             justify-content: center;
             margin-bottom: 1.5rem;
+            width: 100%;
+            box-sizing: border-box;
         }
         .pocket-mode-toggle {
-            display: inline-flex;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             background: var(--card-alt);
             border: 1px solid var(--border);
             border-radius: 99px;
             padding: 0.3rem;
             gap: 0.35rem;
-            max-width: 540px;
+            max-width: 480px;
             width: 100%;
+            box-sizing: border-box;
         }
         .pocket-mode-btn {
-            flex: 1;
-            padding: 0.75rem 1rem;
+            padding: 0.65rem 0.5rem;
             border-radius: 99px;
             border: none;
             background: transparent;
             color: var(--muted);
-            font-size: 0.86rem;
-            font-weight: 800;
             cursor: pointer;
             transition: all 0.2s ease;
-            white-space: nowrap;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 0;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+        .pocket-mode-btn .mode-btn-title {
+            font-size: 0.85rem;
+            font-weight: 800;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+            display: block;
+        }
+        .pocket-mode-btn .mode-btn-sub {
+            font-size: 0.72rem;
+            font-weight: 600;
+            opacity: 0.85;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+            display: block;
         }
         .pocket-mode-btn:hover {
             color: var(--text);
@@ -1162,6 +1195,23 @@
             background: var(--primary);
             color: #ffffff;
             box-shadow: 0 4px 12px rgba(29, 78, 216, 0.3);
+        }
+        @media (max-width: 480px) {
+            .pocket-mode-toggle {
+                padding: 0.25rem;
+                gap: 0.25rem;
+                border-radius: 14px;
+            }
+            .pocket-mode-btn {
+                padding: 0.5rem 0.35rem;
+                border-radius: 10px;
+            }
+            .pocket-mode-btn .mode-btn-title {
+                font-size: 0.78rem;
+            }
+            .pocket-mode-btn .mode-btn-sub {
+                font-size: 0.67rem;
+            }
         }
         .pocket-input-label {
             display: block;
@@ -1187,11 +1237,15 @@
             border: 1px solid var(--border);
             border-radius: 14px;
             padding: 1.15rem 1.25rem;
+            box-sizing: border-box;
+            overflow: hidden;
         }
         .pocket-form-label-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 0.35rem;
             margin-bottom: 0.5rem;
         }
         .pocket-slider-val {
@@ -1201,22 +1255,83 @@
             background: rgba(59, 130, 246, 0.1);
             padding: 0.2rem 0.6rem;
             border-radius: 8px;
+            white-space: nowrap;
         }
         .pocket-range {
+            -webkit-appearance: none;
+            appearance: none;
             width: 100%;
-            height: 8px;
-            border-radius: 99px;
-            background: var(--border);
+            height: 42px;
+            background: transparent;
             outline: none;
-            accent-color: var(--primary);
             cursor: pointer;
-            margin: 0.5rem 0;
+            margin: 0.25rem 0;
+            touch-action: none !important;
+            -webkit-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            display: block;
+            box-sizing: border-box;
+        }
+        .pocket-range::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 12px;
+            background: var(--border);
+            border-radius: 99px;
+            border: none;
+        }
+        .pocket-range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3.5px solid #ffffff;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+            margin-top: -10px;
+            cursor: grab;
+            touch-action: none !important;
+            transition: transform 0.12s ease, box-shadow 0.12s ease;
+        }
+        .pocket-range:active::-webkit-slider-thumb {
+            transform: scale(1.18);
+            box-shadow: 0 4px 14px rgba(29, 78, 216, 0.5);
+            cursor: grabbing;
+        }
+        .pocket-range::-moz-range-track {
+            width: 100%;
+            height: 12px;
+            background: var(--border);
+            border-radius: 99px;
+            border: none;
+        }
+        .pocket-range::-moz-range-thumb {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3.5px solid #ffffff;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+            cursor: grab;
+            touch-action: none !important;
+            transition: transform 0.12s ease;
+        }
+        .pocket-range:active::-moz-range-thumb {
+            transform: scale(1.18);
+            box-shadow: 0 4px 14px rgba(29, 78, 216, 0.5);
+            cursor: grabbing;
         }
         .pocket-salary-pills {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
             gap: 0.4rem;
-            flex-wrap: wrap;
-            margin-top: 0.45rem;
+            margin-top: 0.5rem;
+        }
+        @media (max-width: 480px) {
+            .pocket-salary-pills {
+                grid-template-columns: 1fr 1fr;
+            }
         }
         .salary-quick-pill {
             background: var(--card);
@@ -1224,10 +1339,12 @@
             color: var(--muted);
             font-size: 0.74rem;
             font-weight: 700;
-            padding: 0.25rem 0.6rem;
-            border-radius: 99px;
+            padding: 0.35rem 0.45rem;
+            border-radius: 8px;
             cursor: pointer;
             transition: all 0.15s ease;
+            text-align: center;
+            white-space: nowrap;
         }
         .salary-quick-pill:hover {
             background: var(--primary);
@@ -1235,15 +1352,26 @@
             border-color: var(--primary);
         }
         .pocket-pill-group {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
             gap: 0.4rem;
-            flex-wrap: wrap;
             margin-top: 0.35rem;
         }
+        @media (max-width: 520px) {
+            .pocket-pill-group {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        #pocket-housing-type-group {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        @media (max-width: 520px) {
+            #pocket-housing-type-group {
+                grid-template-columns: 1fr;
+            }
+        }
         .pocket-pill-btn {
-            flex: 1;
-            min-width: 70px;
-            padding: 0.6rem 0.65rem;
+            padding: 0.6rem 0.5rem;
             border-radius: 10px;
             border: 1px solid var(--border);
             background: var(--card);
@@ -1253,6 +1381,9 @@
             cursor: pointer;
             transition: all 0.2s ease;
             text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         .pocket-pill-btn:hover {
             background: rgba(59, 130, 246, 0.08);
@@ -1263,6 +1394,18 @@
             color: #ffffff;
             border-color: var(--primary);
             box-shadow: 0 2px 8px rgba(29, 78, 216, 0.25);
+        }
+        @media (max-width: 600px) {
+            .pocket-page-card {
+                padding: 1.15rem 0.85rem;
+                border-radius: 16px;
+            }
+            .pocket-form-group {
+                padding: 0.95rem 0.8rem;
+            }
+            .pocket-dashboard-card {
+                padding: 1.15rem 0.85rem;
+            }
         }
         .pocket-dashboard-card {
             background: linear-gradient(135deg, rgba(29, 78, 216, 0.04), rgba(16, 185, 129, 0.05));
@@ -2437,10 +2580,12 @@
                             <div class="pocket-mode-toggle-wrap">
                                 <div class="pocket-mode-toggle">
                                     <button type="button" class="pocket-mode-btn active" id="btn-mode-quick" onclick="switchPocketMode('quick')">
-                                        ⚡ Modo Rápido (3 Clics)
+                                        <span class="mode-btn-title">⚡ Modo Rápido</span>
+                                        <span class="mode-btn-sub">3 Clics</span>
                                     </button>
                                     <button type="button" class="pocket-mode-btn" id="btn-mode-real" onclick="switchPocketMode('real')">
-                                        📊 Simulación Real (Sueldo e Hijos)
+                                        <span class="mode-btn-title">📊 Simulación Real</span>
+                                        <span class="mode-btn-sub">Sueldo e Hijos</span>
                                     </button>
                                 </div>
                             </div>
@@ -3633,6 +3778,7 @@
 
         window.addEventListener("DOMContentLoaded", () => {
             updateLive29NCountdown();
+            setupPocketSliderShield();
             const params = new URLSearchParams(window.location.search);
             if (params.has("cx") && params.has("cy")) {
                 const cx = parseFloat(params.get("cx")), cy = parseFloat(params.get("cy"));
@@ -4146,6 +4292,45 @@
             runRealPocketSimulation();
         }
 
+        function setupPocketSliderShield() {
+            const sliders = document.querySelectorAll('.pocket-range');
+            sliders.forEach(slider => {
+                if (slider.hasAttribute('data-touch-shield')) return;
+                slider.setAttribute('data-touch-shield', 'true');
+
+                slider.addEventListener('pointerdown', function(e) {
+                    try {
+                        slider.setPointerCapture(e.pointerId);
+                    } catch (err) {}
+                    document.body.style.touchAction = 'none';
+                });
+
+                const release = function(e) {
+                    try {
+                        slider.releasePointerCapture(e.pointerId);
+                    } catch (err) {}
+                    document.body.style.touchAction = '';
+                };
+
+                slider.addEventListener('pointerup', release);
+                slider.addEventListener('pointercancel', release);
+
+                slider.addEventListener('touchstart', function(e) {
+                    document.body.style.touchAction = 'none';
+                }, { passive: true });
+
+                slider.addEventListener('touchmove', function(e) {
+                    e.stopPropagation();
+                }, { passive: true });
+
+                const endTouch = function() {
+                    document.body.style.touchAction = '';
+                };
+                slider.addEventListener('touchend', endTouch, { passive: true });
+                slider.addEventListener('touchcancel', endTouch, { passive: true });
+            });
+        }
+
         function updatePocketSimulatorView() {
             const currentParty = activePocketParty || finalWinnerName;
             const gateCard = document.getElementById("pocket-gate-card");
@@ -4186,6 +4371,8 @@
             if (manualSelect && manualSelect.value !== currentParty) {
                 manualSelect.value = currentParty;
             }
+
+            setupPocketSliderShield();
 
             if (pocketMode === 'quick') {
                 runQuickPocketSimulation();
@@ -4383,7 +4570,8 @@
 
             // Medidas destacadas en lista
             const measuresList = document.getElementById("pocket-measures-list");
-            if (measuresList) {
+            if (measuresList && measuresList.getAttribute("data-party") !== party) {
+                measuresList.setAttribute("data-party", party);
                 const measures = isRightEcon ? [
                     `📌 <strong>Deflactación del IRPF:</strong> Ajuste automático de las tablas de IRPF con la inflación para evitar pagar más impuestos ganando el mismo poder adquisitivo.`,
                     `📌 <strong>Seguridad en Vivienda:</strong> Incentivos fiscales del 100% para propietarios que pongan pisos en alquiler y desalojo exprés anti-okupación en 24-48h.`,
