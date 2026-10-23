@@ -1239,6 +1239,137 @@
             }
         }
 
+        /* TABS DE NAVEGACIÓN EN RESULTADOS (FASE 2) */
+        .results-tab-bar {
+            display: flex;
+            gap: 0.45rem;
+            background: var(--card-alt);
+            border: 1px solid var(--border);
+            border-radius: 99px;
+            padding: 0.35rem;
+            margin: 1.25rem auto 1.5rem;
+            max-width: 580px;
+            position: sticky;
+            top: 12px;
+            z-index: 120;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+        }
+        .results-tab-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+            padding: 0.75rem 0.85rem;
+            border: none;
+            border-radius: 99px;
+            background: transparent;
+            color: var(--muted);
+            font-size: 0.88rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.22s ease;
+            user-select: none;
+            white-space: nowrap;
+        }
+        .results-tab-btn:hover {
+            color: var(--text);
+            background: rgba(59, 130, 246, 0.08);
+        }
+        .results-tab-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(29, 78, 216, 0.35);
+        }
+        .tab-pane {
+            display: none;
+            animation: tabFadeIn 0.24s ease;
+        }
+        .tab-pane.active {
+            display: block;
+        }
+        @keyframes tabFadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* TARJETA GUÍA / SIGUIENTE PASO AL FINAL DE CADA TAB */
+        .tab-next-card {
+            margin: 1.5rem 0;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(99, 102, 241, 0.08));
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 16px;
+            padding: 1rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .tab-next-card:hover {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.14), rgba(99, 102, 241, 0.14));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(59, 130, 246, 0.15);
+        }
+        .tab-next-left {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            text-align: left;
+        }
+        .tab-next-icon {
+            font-size: 1.6rem;
+            line-height: 1;
+        }
+        .tab-next-left strong {
+            display: block;
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+        .tab-next-left p {
+            font-size: 0.78rem;
+            color: var(--muted);
+            margin: 0.15rem 0 0;
+        }
+        .tab-next-arrow {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--primary-light);
+            white-space: nowrap;
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 0.45rem 0.85rem;
+            border-radius: 99px;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 820px) {
+            .results-tab-bar {
+                max-width: 100%;
+                margin: 1rem 0 1.25rem;
+                padding: 0.25rem;
+                top: 8px;
+            }
+            .results-tab-btn {
+                padding: 0.65rem 0.4rem;
+                font-size: 0.82rem;
+                gap: 0.3rem;
+            }
+            .tab-next-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+                padding: 0.95rem 1rem;
+            }
+            .tab-next-arrow {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
         /* CAJA DE DONACIÓN DE 1 EURO + DOSSIER PDF */
         .supporter-box {
             margin-top: 1.75rem;
@@ -1625,137 +1756,186 @@
                                 <p id="winner-ideology-desc" style="font-size: 0.92rem; max-width: 680px; margin: 0.35rem auto 0;"></p>
                             </div>
 
-                            <!-- INNOVACIÓN: SIMULADOR DEL "PACTO DE LA CENA DE NAVIDAD" Y SALA DE GRUPO -->
-                            <div id="friend-comparison-box" style="display:none; background:rgba(147,51,234,0.09); border:2px solid #9333ea; padding:1.2rem; border-radius:16px; margin-bottom:1.25rem;">
-                                <h3 style="color: #9333ea; margin-bottom: 0.35rem; font-size:1.1rem;" id="friend-box-title">🎄 El Pacto de la Cena de Navidad (Comparativa con tu Amigo)</h3>
-                                <p id="friend-match-text" style="font-weight: 600; font-size:0.9rem; margin-bottom:0.5rem;"></p>
-                                <div id="friend-clash-details" style="font-size:0.84rem; display:grid; grid-template-columns:1fr 1fr; gap:0.65rem;"></div>
-                            </div>
-
-                            <div class="results-grid">
-                                <div class="compass-box" onclick="openCompassModal()">
-                                    <h3>Tu Brújula Política 2D</h3>
-                                    <span class="compass-hint">🔍 ¡Toca aquí para ampliar el mapa interactivo!</span>
-                                    <canvas id="compassCanvas" width="360" height="360"></canvas>
-                                    <p style="font-size: 0.78rem; color: var(--muted); text-align: center; margin-top: 0.5rem;">
-                                        🎯 <strong>Punto Amarillo (TÚ)</strong> frente a todos los partidos.
-                                    </p>
-                                </div>
-
-                                <div class="affinity-box">
-                                    <h3>Compatibilidad por Partido (%)</h3>
-                                    <div id="party-bars-container"></div>
-                                </div>
-                            </div>
-
-                            <!-- ACCIONES VIRALES Y COMPARTIR (SUBIDAS JUSTO BAJO EL GRÁFICO) -->
-                            <div class="viral-actions-wrapper">
-                                <div class="viral-actions-header">
-                                    <span class="viral-header-title">🔥 Comparte o reta a tus amigos</span>
-                                    <span class="viral-header-badge">⚡ Resultados 29N</span>
-                                </div>
-                                <div class="viral-actions">
-                                    <button class="btn-viral btn-challenge" onclick="shareFriendWhatsApp()">
-                                        <span>📲</span> <span>Retar a un Amigo</span>
-                                    </button>
-                                    <button class="btn-viral btn-story" onclick="openDownloadAdModal()">
-                                        <span>📸</span> <span>Descargar Foto</span>
-                                    </button>
-                                    <button class="btn-viral btn-group-room" onclick="createGroupRoomLink()">
-                                        <span>👥</span> <span>Sala de Grupo</span>
-                                    </button>
-                                    <button class="btn-repeat-action" onclick="restartQuiz()" title="Repetir el test">
-                                        <span>🔄</span> <span>Repetir</span>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <!-- MÓDULO SECUNDARIO: ACORDEÓN DE ANÁLISIS DEL CONGRESO (ANTÍPODA + PACTÓMETRO) -->
-                            <details class="results-accordion" id="accordion-congress">
-                                <summary class="accordion-summary">
-                                    <div class="accordion-summary-left">
-                                        <span class="accordion-icon-badge">🏛️</span>
-                                        <div>
-                                            <strong class="accordion-title">Análisis del Congreso y Posibles Pactos</strong>
-                                            <p class="accordion-subtitle">Tu antípoda política y mayoría de investidura (176 escaños)</p>
-                                        </div>
-                                    </div>
-                                    <div class="accordion-summary-right">
-                                        <span class="accordion-state-pill">Ver análisis</span>
-                                        <span class="accordion-chevron">▾</span>
-                                    </div>
-                                </summary>
-                                <div class="accordion-body">
-                                    <div class="extra-insights-grid">
-                                        <div class="insight-mini-card" style="border-left: 4px solid #ef4444;">
-                                            <strong style="color:#ef4444; display:block; font-size:0.78rem; text-transform:uppercase;">⚡ Tu Antípoda Política (Menor Afinidad)</strong>
-                                            <div id="antipode-party-text" style="font-weight:800; font-size:1.05rem; margin-top:0.2rem;">Calculando...</div>
-                                            <p style="font-size:0.78rem; color:var(--muted); margin-top:0.15rem;">El partido con el programa más alejado de tus respuestas.</p>
-                                        </div>
-                                        <div class="insight-mini-card" style="border-left: 4px solid #10b981;">
-                                            <strong style="color:#10b981; display:block; font-size:0.78rem; text-transform:uppercase;">🏛️ Pactómetro de Investidura (176 Escaños)</strong>
-                                            <div id="pactometro-title" style="font-weight:800; font-size:0.98rem; margin-top:0.2rem;">Mayoría en el Congreso</div>
-                                            <p id="pactometro-desc" style="font-size:0.78rem; color:var(--muted); margin-top:0.15rem;"></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </details>
-
-                            <!-- INNOVACIÓN: CALCULADORA INTERACTIVA DE IMPACTO EN TU BOLSILLO -->
-                            <div class="pocket-calc-card">
-                                <span class="topic-tag">💶 Simulador Económico Personalizado</span>
-                                <h3 style="font-size:1.2rem; margin-top:0.35rem;">Calculadora de Impacto en tu Bolsillo (Según tu Partido Nº1)</h3>
-                                <p style="font-size:0.84rem; color:var(--muted);">Selecciona tus 3 datos para calcular cómo te afectaría económicamente el programa de <strong id="pocket-party-label">tu partido ganador</strong>:</p>
-                                <div class="pocket-inputs-grid">
-                                    <select id="pocket-job" class="pocket-select" onchange="updatePocketCalculator()">
-                                        <option value="asalariado">👔 Trabajador Asalariado</option>
-                                        <option value="autonomo">🧾 Autónomo / Pyme</option>
-                                        <option value="joven">🎓 Joven / Estudiante (&lt;35 años)</option>
-                                        <option value="pensionista">👴 Pensionista / Jubilado</option>
-                                    </select>
-                                    <select id="pocket-income" class="pocket-select" onchange="updatePocketCalculator()">
-                                        <option value="bajo">💶 Menos de 25.000 € / año</option>
-                                        <option value="medio" selected>💶 Entre 25.000 € y 45.000 € / año</option>
-                                        <option value="alto">💶 Más de 60.000 € / año</option>
-                                    </select>
-                                    <select id="pocket-house" class="pocket-select" onchange="updatePocketCalculator()">
-                                        <option value="alquiler">🔑 Vivo de Alquiler</option>
-                                        <option value="hipoteca">🏦 Pago Hipoteca</option>
-                                        <option value="propietario">🏠 Propietario / Busco comprar</option>
-                                    </select>
-                                </div>
-                                <div id="pocket-result-box" class="impact-box" style="margin-top:0.5rem;"></div>
-                            </div>
-
-                            <!-- SECCIÓN: "TU PARTIDO POLÍTICO IDEAL" + CONSEJO DE MINISTROS (ENSEÑA HASTA EL LEMA Y PIXELA LO DEMÁS CON CANDADO CLICKEABLE) -->
-                            <div class="ideal-party-card" id="ideal-party-ui-box"></div>
-
-                            <!-- ZONA DE APORTACIÓN DE 1€ PARA MANTENER LA PÁGINA (DESTINO AL PULSAR EL CANDADO) -->
-                            <div class="supporter-box" id="donation-target-box">
-                                <div style="flex: 1 1 300px;">
-                                    <span style="background: rgba(245, 158, 11, 0.2); color: var(--accent); font-size: 0.72rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 99px; text-transform: uppercase;">❤️ Aportación de 1,00 € para mantener la web</span>
-                                    <h4 style="color: var(--text); font-size: 1.15rem; margin-top: 0.4rem;">Ayuda a sostener esta página independiente (1,00 €) y llévate el Pack Fundador Completo</h4>
-                                    <p style="font-size: 0.86rem; color: var(--muted); margin-top: 0.25rem;">
-                                        Este portal no recibe subvenciones públicas. Con tu <strong>aportación simbólica de 1,00 € para ayudar a pagar el servidor y mantener la página abierta</strong>, desbloqueas:
-                                        <br>✔️ Los <strong>6 Ministerios y el Consejo de Ministros Híbrido</strong> de tu Partido Ideal.
-                                        <br>✔️ Tu <strong>Dossier Oficial en PDF 100% Vectorial</strong> (`Dossier - [Tu Partido].pdf`).
-                                        <br>✔️ Tu <strong>Carné Oficial de Fundador/Presidente</strong> personalizado para redes.
-                                    </p>
-                                </div>
-                                <div style="display:flex; flex-direction:column; gap:0.5rem; width:100%; max-width:320px;">
-                                    <button class="btn-pay" onclick="proceedToDonationPayment()" style="width:100%;">
-                                        ☕ Aportar 1,00 € a la Página y Desbloquear Todo →
-                                    </button>
-                                    <button class="btn-secondary" onclick="openPdfDonationModal()" style="width:100%; font-size:0.8rem;">
-                                        👁️ Ver vista previa del Dossier + Carné (Con Candado)
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="results-footer-restart" style="text-align: center; margin: 1.5rem 0 0.5rem;">
-                                <button class="btn-secondary" onclick="restartQuiz()" style="font-size: 0.85rem; padding: 0.65rem 1.25rem;">
-                                    🔄 Volver a realizar el test desde el principio
+                            <!-- BARRA DE PESTAÑAS (FASE 2: NAVEGACIÓN DIRECTA SIN SCROLL) -->
+                            <div class="results-tab-bar" id="results-nav-tabs">
+                                <button class="results-tab-btn active" id="tab-btn-afinidad" onclick="switchResultsTab('afinidad')">
+                                    <span class="tab-btn-icon">📊</span>
+                                    <span class="tab-btn-text">Afinidad</span>
                                 </button>
+                                <button class="results-tab-btn" id="tab-btn-bolsillo" onclick="switchResultsTab('bolsillo')">
+                                    <span class="tab-btn-icon">💶</span>
+                                    <span class="tab-btn-text">Bolsillo</span>
+                                </button>
+                                <button class="results-tab-btn" id="tab-btn-partido" onclick="switchResultsTab('partido')">
+                                    <span class="tab-btn-icon">🏛️</span>
+                                    <span class="tab-btn-text">Tu Partido</span>
+                                </button>
+                            </div>
+
+                            <!-- PESTAÑA 1: AFINIDAD Y COMPARTIR -->
+                            <div class="tab-pane active" id="tab-pane-afinidad">
+                                <!-- INNOVACIÓN: SIMULADOR DEL "PACTO DE LA CENA DE NAVIDAD" Y SALA DE GRUPO -->
+                                <div id="friend-comparison-box" style="display:none; background:rgba(147,51,234,0.09); border:2px solid #9333ea; padding:1.2rem; border-radius:16px; margin-bottom:1.25rem;">
+                                    <h3 style="color: #9333ea; margin-bottom: 0.35rem; font-size:1.1rem;" id="friend-box-title">🎄 El Pacto de la Cena de Navidad (Comparativa con tu Amigo)</h3>
+                                    <p id="friend-match-text" style="font-weight: 600; font-size:0.9rem; margin-bottom:0.5rem;"></p>
+                                    <div id="friend-clash-details" style="font-size:0.84rem; display:grid; grid-template-columns:1fr 1fr; gap:0.65rem;"></div>
+                                </div>
+
+                                <div class="results-grid">
+                                    <div class="compass-box" onclick="openCompassModal()">
+                                        <h3>Tu Brújula Política 2D</h3>
+                                        <span class="compass-hint">🔍 ¡Toca aquí para ampliar el mapa interactivo!</span>
+                                        <canvas id="compassCanvas" width="360" height="360"></canvas>
+                                        <p style="font-size: 0.78rem; color: var(--muted); text-align: center; margin-top: 0.5rem;">
+                                            🎯 <strong>Punto Amarillo (TÚ)</strong> frente a todos los partidos.
+                                        </p>
+                                    </div>
+
+                                    <div class="affinity-box">
+                                        <h3>Compatibilidad por Partido (%)</h3>
+                                        <div id="party-bars-container"></div>
+                                    </div>
+                                </div>
+
+                                <!-- ACCIONES VIRALES Y COMPARTIR (SUBIDAS JUSTO BAJO EL GRÁFICO) -->
+                                <div class="viral-actions-wrapper">
+                                    <div class="viral-actions-header">
+                                        <span class="viral-header-title">🔥 Comparte o reta a tus amigos</span>
+                                        <span class="viral-header-badge">⚡ Resultados 29N</span>
+                                    </div>
+                                    <div class="viral-actions">
+                                        <button class="btn-viral btn-challenge" onclick="shareFriendWhatsApp()">
+                                            <span>📲</span> <span>Retar a un Amigo</span>
+                                        </button>
+                                        <button class="btn-viral btn-story" onclick="openDownloadAdModal()">
+                                            <span>📸</span> <span>Descargar Foto</span>
+                                        </button>
+                                        <button class="btn-viral btn-group-room" onclick="createGroupRoomLink()">
+                                            <span>👥</span> <span>Sala de Grupo</span>
+                                        </button>
+                                        <button class="btn-repeat-action" onclick="restartQuiz()" title="Repetir el test">
+                                            <span>🔄</span> <span>Repetir</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- MÓDULO SECUNDARIO: ACORDEÓN DE ANÁLISIS DEL CONGRESO (ANTÍPODA + PACTÓMETRO) -->
+                                <details class="results-accordion" id="accordion-congress">
+                                    <summary class="accordion-summary">
+                                        <div class="accordion-summary-left">
+                                            <span class="accordion-icon-badge">🏛️</span>
+                                            <div>
+                                                <strong class="accordion-title">Análisis del Congreso y Posibles Pactos</strong>
+                                                <p class="accordion-subtitle">Tu antípoda política y mayoría de investidura (176 escaños)</p>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-summary-right">
+                                            <span class="accordion-state-pill">Ver análisis</span>
+                                            <span class="accordion-chevron">▾</span>
+                                        </div>
+                                    </summary>
+                                    <div class="accordion-body">
+                                        <div class="extra-insights-grid">
+                                            <div class="insight-mini-card" style="border-left: 4px solid #ef4444;">
+                                                <strong style="color:#ef4444; display:block; font-size:0.78rem; text-transform:uppercase;">⚡ Tu Antípoda Política (Menor Afinidad)</strong>
+                                                <div id="antipode-party-text" style="font-weight:800; font-size:1.05rem; margin-top:0.2rem;">Calculando...</div>
+                                                <p style="font-size:0.78rem; color:var(--muted); margin-top:0.15rem;">El partido con el programa más alejado de tus respuestas.</p>
+                                            </div>
+                                            <div class="insight-mini-card" style="border-left: 4px solid #10b981;">
+                                                <strong style="color:#10b981; display:block; font-size:0.78rem; text-transform:uppercase;">🏛️ Pactómetro de Investidura (176 Escaños)</strong>
+                                                <div id="pactometro-title" style="font-weight:800; font-size:0.98rem; margin-top:0.2rem;">Mayoría en el Congreso</div>
+                                                <p id="pactometro-desc" style="font-size:0.78rem; color:var(--muted); margin-top:0.15rem;"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </details>
+
+                                <!-- ACCESO RÁPIDO A LA SIGUIENTE SECCIÓN -->
+                                <div class="tab-next-card" onclick="switchResultsTab('bolsillo')">
+                                    <div class="tab-next-left">
+                                        <span class="tab-next-icon">💶</span>
+                                        <div>
+                                            <strong>Siguiente: ¿Cómo afectaría este partido a tu bolsillo?</strong>
+                                            <p>Simulador económico según tu salario, vivienda y perfil laboral</p>
+                                        </div>
+                                    </div>
+                                    <span class="tab-next-arrow">Ir a Bolsillo →</span>
+                                </div>
+                            </div>
+
+                            <!-- PESTAÑA 2: CALCULADORA DE BOLSILLO -->
+                            <div class="tab-pane" id="tab-pane-bolsillo">
+                                <!-- INNOVACIÓN: CALCULADORA INTERACTIVA DE IMPACTO EN TU BOLSILLO -->
+                                <div class="pocket-calc-card">
+                                    <span class="topic-tag">💶 Simulador Económico Personalizado</span>
+                                    <h3 style="font-size:1.2rem; margin-top:0.35rem;">Calculadora de Impacto en tu Bolsillo (Según tu Partido Nº1)</h3>
+                                    <p style="font-size:0.84rem; color:var(--muted);">Selecciona tus 3 datos para calcular cómo te afectaría económicamente el programa de <strong id="pocket-party-label">tu partido ganador</strong>:</p>
+                                    <div class="pocket-inputs-grid">
+                                        <select id="pocket-job" class="pocket-select" onchange="updatePocketCalculator()">
+                                            <option value="asalariado">👔 Trabajador Asalariado</option>
+                                            <option value="autonomo">🧾 Autónomo / Pyme</option>
+                                            <option value="joven">🎓 Joven / Estudiante (&lt;35 años)</option>
+                                            <option value="pensionista">👴 Pensionista / Jubilado</option>
+                                        </select>
+                                        <select id="pocket-income" class="pocket-select" onchange="updatePocketCalculator()">
+                                            <option value="bajo">💶 Menos de 25.000 € / año</option>
+                                            <option value="medio" selected>💶 Entre 25.000 € y 45.000 € / año</option>
+                                            <option value="alto">💶 Más de 60.000 € / año</option>
+                                        </select>
+                                        <select id="pocket-house" class="pocket-select" onchange="updatePocketCalculator()">
+                                            <option value="alquiler">🔑 Vivo de Alquiler</option>
+                                            <option value="hipoteca">🏦 Pago Hipoteca</option>
+                                            <option value="propietario">🏠 Propietario / Busco comprar</option>
+                                        </select>
+                                    </div>
+                                    <div id="pocket-result-box" class="impact-box" style="margin-top:0.5rem;"></div>
+                                </div>
+
+                                <!-- ACCESO RÁPIDO A LA SIGUIENTE SECCIÓN -->
+                                <div class="tab-next-card" onclick="switchResultsTab('partido')">
+                                    <div class="tab-next-left">
+                                        <span class="tab-next-icon">🏛️</span>
+                                        <div>
+                                            <strong>Siguiente: Tu Partido Político Ideal y Consejo de Ministros</strong>
+                                            <p>Descubre el partido perfecto a tu medida y desbloquea el Dossier en PDF</p>
+                                        </div>
+                                    </div>
+                                    <span class="tab-next-arrow">Ver Tu Partido →</span>
+                                </div>
+                            </div>
+
+                            <!-- PESTAÑA 3: TU PARTIDO IDEAL Y DOSSIER/DONACIÓN -->
+                            <div class="tab-pane" id="tab-pane-partido">
+                                <!-- SECCIÓN: "TU PARTIDO POLÍTICO IDEAL" + CONSEJO DE MINISTROS (ENSEÑA HASTA EL LEMA Y PIXELA LO DEMÁS CON CANDADO CLICKEABLE) -->
+                                <div class="ideal-party-card" id="ideal-party-ui-box"></div>
+
+                                <!-- ZONA DE APORTACIÓN DE 1€ PARA MANTENER LA PÁGINA (DESTINO AL PULSAR EL CANDADO) -->
+                                <div class="supporter-box" id="donation-target-box">
+                                    <div style="flex: 1 1 300px;">
+                                        <span style="background: rgba(245, 158, 11, 0.2); color: var(--accent); font-size: 0.72rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 99px; text-transform: uppercase;">❤️ Aportación de 1,00 € para mantener la web</span>
+                                        <h4 style="color: var(--text); font-size: 1.15rem; margin-top: 0.4rem;">Ayuda a sostener esta página independiente (1,00 €) y llévate el Pack Fundador Completo</h4>
+                                        <p style="font-size: 0.86rem; color: var(--muted); margin-top: 0.25rem;">
+                                            Este portal no recibe subvenciones públicas. Con tu <strong>aportación simbólica de 1,00 € para ayudar a pagar el servidor y mantener la página abierta</strong>, desbloqueas:
+                                            <br>✔️ Los <strong>6 Ministerios y el Consejo de Ministros Híbrido</strong> de tu Partido Ideal.
+                                            <br>✔️ Tu <strong>Dossier Oficial en PDF 100% Vectorial</strong> (`Dossier - [Tu Partido].pdf`).
+                                            <br>✔️ Tu <strong>Carné Oficial de Fundador/Presidente</strong> personalizado para redes.
+                                        </p>
+                                    </div>
+                                    <div style="display:flex; flex-direction:column; gap:0.5rem; width:100%; max-width:320px;">
+                                        <button class="btn-pay" onclick="proceedToDonationPayment()" style="width:100%;">
+                                            ☕ Aportar 1,00 € a la Página y Desbloquear Todo →
+                                        </button>
+                                        <button class="btn-secondary" onclick="openPdfDonationModal()" style="width:100%; font-size:0.8rem;">
+                                            👁️ Ver vista previa del Dossier + Carné (Con Candado)
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="results-footer-restart" style="text-align: center; margin: 1.5rem 0 0.5rem;">
+                                    <button class="btn-secondary" onclick="restartQuiz()" style="font-size: 0.85rem; padding: 0.65rem 1.25rem;">
+                                        🔄 Volver a realizar el test desde el principio
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
@@ -3041,13 +3221,16 @@
         }
 
         function scrollToDonationAndOpen() {
-            const target = document.getElementById("donation-target-box");
-            if (target) {
-                target.scrollIntoView({ behavior: "smooth", block: "center" });
-                target.classList.add("highlight-pulse");
-                setTimeout(() => target.classList.remove("highlight-pulse"), 2200);
-            }
-            setTimeout(() => openPdfDonationModal(), 450);
+            switchResultsTab('partido');
+            setTimeout(() => {
+                const target = document.getElementById("donation-target-box");
+                if (target) {
+                    target.scrollIntoView({ behavior: "smooth", block: "center" });
+                    target.classList.add("highlight-pulse");
+                    setTimeout(() => target.classList.remove("highlight-pulse"), 2200);
+                }
+                setTimeout(() => openPdfDonationModal(), 350);
+            }, 60);
         }
 
         function renderIdealPartyOnScreen() {
@@ -3295,6 +3478,33 @@
             updatePocketCalculator();
             renderIdealPartyOnScreen();
             drawCompassCanvas(finalUserX, finalUserY, activePartyNames);
+            switchResultsTab('afinidad');
+        }
+
+        function switchResultsTab(tabName) {
+            const tabs = ['afinidad', 'bolsillo', 'partido'];
+            tabs.forEach(t => {
+                const btn = document.getElementById(`tab-btn-${t}`);
+                const pane = document.getElementById(`tab-pane-${t}`);
+                if (btn) btn.classList.toggle('active', t === tabName);
+                if (pane) pane.classList.toggle('active', t === tabName);
+            });
+
+            const tabBar = document.getElementById('results-nav-tabs');
+            if (tabBar) {
+                const navRect = tabBar.getBoundingClientRect();
+                if (navRect.top < 0) {
+                    const topPos = window.pageYOffset + navRect.top - 16;
+                    window.scrollTo({ top: topPos, behavior: 'smooth' });
+                }
+            }
+
+            if (tabName === 'afinidad' && typeof drawCompassCanvas === 'function') {
+                try {
+                    const activePartyNames = getActivePartyNames();
+                    drawCompassCanvas(finalUserX, finalUserY, activePartyNames);
+                } catch (e) {}
+            }
         }
 
         function openCompassModal() {
@@ -4047,6 +4257,7 @@
             document.getElementById("results-section").style.display = "none";
             document.getElementById("loading-ad-screen").style.display = "none";
             document.getElementById("start-screen").style.display = "block";
+            switchResultsTab('afinidad');
         }
 
         const legalTexts = {
