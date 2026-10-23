@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://elecciones29ntest.es/sitemap.xml
