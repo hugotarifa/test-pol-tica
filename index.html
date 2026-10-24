@@ -860,13 +860,145 @@
             border-radius: 99px;
         }
 
-        .options-grid { display: flex; flex-direction: column; gap: 0.52rem; }
-        .option-btn { background: var(--card-alt); border: 2px solid var(--border); border-radius: 12px; padding: 0.85rem 1.15rem; font-size: 0.95rem; font-weight: 700; color: var(--text); cursor: pointer; text-align: left; display: flex; justify-content: space-between; align-items: center; transition: all 0.15s ease; }
-        .option-btn:hover { border-color: var(--primary-light); background: rgba(59, 130, 246, 0.06); }
-        .option-btn:active { border-color: var(--primary-light); background: rgba(59, 130, 246, 0.14); }
+        .options-grid { display: flex; flex-direction: column; gap: 0.55rem; }
+        .option-btn {
+            background: var(--card-alt);
+            border: 2px solid var(--border);
+            border-radius: 14px;
+            padding: 0.85rem 1.15rem;
+            font-size: 0.94rem;
+            font-weight: 700;
+            color: var(--text);
+            cursor: pointer;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.1s ease, border-color 0.15s ease, background-color 0.15s ease;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+        .option-btn:active {
+            transform: scale(0.98);
+        }
+        .option-btn .opt-icon {
+            font-size: 1.2rem;
+            transition: transform 0.15s ease;
+            line-height: 1;
+        }
+        .option-btn:active .opt-icon {
+            transform: scale(1.22);
+        }
 
-        .quiz-controls { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 0.8rem; margin-top: 0.2rem; }
-        .btn-secondary { background: var(--card-alt); border: 1px solid var(--border); color: var(--text); padding: 0.55rem 1rem; border-radius: 10px; cursor: pointer; font-weight: 700; font-size: 0.84rem; }
+        /* PALETA ERGONÓMICA ESTILO WAHL-O-MAT */
+        .option-agree-strong {
+            border-color: rgba(16, 185, 129, 0.45);
+            background: rgba(16, 185, 129, 0.05);
+        }
+        .option-agree-strong:hover, .option-agree-strong.selected {
+            border-color: #10b981;
+            background: rgba(16, 185, 129, 0.15);
+        }
+        .option-agree {
+            border-color: rgba(59, 130, 246, 0.35);
+            background: rgba(59, 130, 246, 0.04);
+        }
+        .option-agree:hover, .option-agree.selected {
+            border-color: #3b82f6;
+            background: rgba(59, 130, 246, 0.12);
+        }
+        .option-neutral {
+            border-color: var(--border);
+            background: var(--card-alt);
+        }
+        .option-neutral:hover, .option-neutral.selected {
+            border-color: #64748b;
+            background: rgba(100, 116, 139, 0.12);
+        }
+        .option-disagree {
+            border-color: rgba(245, 158, 11, 0.4);
+            background: rgba(245, 158, 11, 0.04);
+        }
+        .option-disagree:hover, .option-disagree.selected {
+            border-color: #f59e0b;
+            background: rgba(245, 158, 11, 0.12);
+        }
+        .option-disagree-strong {
+            border-color: rgba(239, 68, 68, 0.45);
+            background: rgba(239, 68, 68, 0.05);
+        }
+        .option-disagree-strong:hover, .option-disagree-strong.selected {
+            border-color: #ef4444;
+            background: rgba(239, 68, 68, 0.15);
+        }
+
+        /* TRANSICIONES FLUIDAS ENTRE PREGUNTAS */
+        #question-container {
+            transition: transform 0.15s ease, opacity 0.15s ease;
+            will-change: transform, opacity;
+        }
+        .card-slide-out-left {
+            animation: qSlideOutLeft 0.14s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        .card-slide-in-right {
+            animation: qSlideInRight 0.16s cubic-bezier(0.2, 0, 0.2, 1) forwards;
+        }
+        .card-slide-out-right {
+            animation: qSlideOutRight 0.14s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        .card-slide-in-left {
+            animation: qSlideInLeft 0.16s cubic-bezier(0.2, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes qSlideOutLeft {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(-24px); opacity: 0; }
+        }
+        @keyframes qSlideInRight {
+            from { transform: translateX(24px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes qSlideOutRight {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(24px); opacity: 0; }
+        }
+        @keyframes qSlideInLeft {
+            from { transform: translateX(-24px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .quiz-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border);
+            padding-top: 0.85rem;
+            margin-top: 0.25rem;
+            gap: 0.5rem;
+        }
+        .btn-secondary {
+            background: var(--card-alt);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.6rem 1.05rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.84rem;
+            transition: all 0.15s ease;
+        }
+        .btn-secondary:hover {
+            border-color: var(--primary-light);
+            background: rgba(59, 130, 246, 0.08);
+        }
+        .btn-skip-question {
+            color: var(--muted);
+            border-style: dashed;
+        }
+        .btn-skip-question:hover {
+            color: var(--text);
+            border-style: solid;
+        }
 
         /* PANTALLA DE ESPERA DE 10 SEGUNDOS */
         #loading-ad-screen {
@@ -2578,26 +2710,28 @@
                             </label>
 
                             <div class="options-grid">
-                                <button class="option-btn" onclick="selectAnswer(2)">
-                                    <span>Totalmente de acuerdo</span> <span>👍</span>
+                                <button class="option-btn option-agree-strong" data-val="2" onclick="selectAnswer(2)">
+                                    <span>Totalmente de acuerdo</span> <span class="opt-icon">👍</span>
                                 </button>
-                                <button class="option-btn" onclick="selectAnswer(1)">
-                                    <span>De acuerdo</span> <span>🙂</span>
+                                <button class="option-btn option-agree" data-val="1" onclick="selectAnswer(1)">
+                                    <span>De acuerdo</span> <span class="opt-icon">🙂</span>
                                 </button>
-                                <button class="option-btn" onclick="selectAnswer(0)">
-                                    <span>Neutral / Depende</span> <span>😐</span>
+                                <button class="option-btn option-neutral" data-val="0" onclick="selectAnswer(0)">
+                                    <span>Neutral / Depende</span> <span class="opt-icon">😐</span>
                                 </button>
-                                <button class="option-btn" onclick="selectAnswer(-1)">
-                                    <span>En desacuerdo</span> <span>🙁</span>
+                                <button class="option-btn option-disagree" data-val="-1" onclick="selectAnswer(-1)">
+                                    <span>En desacuerdo</span> <span class="opt-icon">🙁</span>
                                 </button>
-                                <button class="option-btn" onclick="selectAnswer(-2)">
-                                    <span>Totalmente en desacuerdo</span> <span>👎</span>
+                                <button class="option-btn option-disagree-strong" data-val="-2" onclick="selectAnswer(-2)">
+                                    <span>Totalmente en desacuerdo</span> <span class="opt-icon">👎</span>
                                 </button>
                             </div>
 
                             <div class="quiz-controls">
                                 <button class="btn-secondary" id="prev-btn" onclick="prevQuestion()" style="visibility: hidden;">← Anterior</button>
-                                <span style="font-size: 0.75rem; color: var(--muted);">100% Anónimo • elecciones29ntest.es</span>
+                                <button type="button" class="btn-secondary btn-skip-question" onclick="selectAnswer(0)" title="No tengo opinión clara sobre este tema">
+                                    ⏭️ Saltar pregunta
+                                </button>
                             </div>
                         </div>
 
@@ -4300,6 +4434,16 @@
             updatePriorityUI();
         }
 
+        let isCardTransitioning = false;
+
+        function triggerHapticFeedback() {
+            if (typeof navigator !== "undefined" && navigator.vibrate) {
+                try {
+                    navigator.vibrate(10);
+                } catch (e) {}
+            }
+        }
+
         function renderQuestion() {
             const q = questions[currentIndex];
             document.getElementById("question-counter").innerText = `Pregunta ${currentIndex + 1} de ${questions.length}`;
@@ -4319,6 +4463,20 @@
             const progress = ((currentIndex + 1) / questions.length) * 100;
             document.getElementById("progress-fill").style.width = `${progress}%`;
             document.getElementById("prev-btn").style.visibility = currentIndex > 0 ? "visible" : "hidden";
+
+            // Feedback ergonómico: marcar visualmente la opción seleccionada si se retrocede
+            const currentAnswer = userAnswers[currentIndex];
+            document.querySelectorAll(".options-grid .option-btn").forEach(btn => {
+                const valAttr = btn.getAttribute("data-val");
+                if (valAttr !== null) {
+                    const val = parseInt(valAttr, 10);
+                    if (currentAnswer !== null && currentAnswer !== undefined && currentAnswer === val) {
+                        btn.classList.add("selected");
+                    } else {
+                        btn.classList.remove("selected");
+                    }
+                }
+            });
         }
 
         function toggleExplanation() {
@@ -4338,18 +4496,54 @@
         }
 
         function selectAnswer(value) {
+            if (isCardTransitioning) return;
+            triggerHapticFeedback();
             userAnswers[currentIndex] = value;
 
             if (currentIndex < questions.length - 1) {
-                currentIndex++;
-                renderQuestion();
+                const container = document.getElementById("question-container");
+                if (container) {
+                    isCardTransitioning = true;
+                    container.classList.remove("card-slide-in-right", "card-slide-in-left");
+                    container.classList.add("card-slide-out-left");
+                    setTimeout(() => {
+                        currentIndex++;
+                        renderQuestion();
+                        container.classList.remove("card-slide-out-left");
+                        container.classList.add("card-slide-in-right");
+                        setTimeout(() => {
+                            container.classList.remove("card-slide-in-right");
+                            isCardTransitioning = false;
+                        }, 160);
+                    }, 130);
+                } else {
+                    currentIndex++;
+                    renderQuestion();
+                }
             } else {
                 triggerLoadingAndResults();
             }
         }
 
         function prevQuestion() {
-            if (currentIndex > 0) {
+            if (isCardTransitioning || currentIndex <= 0) return;
+            triggerHapticFeedback();
+            const container = document.getElementById("question-container");
+            if (container) {
+                isCardTransitioning = true;
+                container.classList.remove("card-slide-in-right", "card-slide-in-left");
+                container.classList.add("card-slide-out-right");
+                setTimeout(() => {
+                    currentIndex--;
+                    renderQuestion();
+                    container.classList.remove("card-slide-out-right");
+                    container.classList.add("card-slide-in-left");
+                    setTimeout(() => {
+                        container.classList.remove("card-slide-in-left");
+                        isCardTransitioning = false;
+                    }, 160);
+                }, 130);
+            } else {
                 currentIndex--;
                 renderQuestion();
             }
@@ -5945,8 +6139,13 @@
 
         function restartQuiz() {
             currentIndex = 0;
+            isCardTransitioning = false;
             userAnswers.fill(null);
             userPriorities.fill(false);
+            const container = document.getElementById("question-container");
+            if (container) {
+                container.classList.remove("card-slide-in-right", "card-slide-in-left", "card-slide-out-left", "card-slide-out-right");
+            }
             document.body.classList.remove("quiz-fullscreen-mode");
             document.getElementById("results-section").style.display = "none";
             document.getElementById("loading-ad-screen").style.display = "none";
