@@ -2155,13 +2155,13 @@
         .btn-pay:hover { transform: translateY(-2px); }
 
         .pdf-preview-wrapper {
-            background: #ffffff;
+            background: #f1f5f9;
             color: #0f172a;
             border: 1px solid #cbd5e1;
-            border-radius: 12px;
-            padding: 1.35rem;
+            border-radius: 10px;
+            padding: 18px;
             margin: 0.85rem 0;
-            max-height: 54vh;
+            max-height: 62vh;
             overflow-y: auto;
             text-align: left;
             font-size: 0.85rem;
@@ -2784,11 +2784,18 @@
            Y AVISO DESTACADO EN NOTIFICACIÓN ("QUEDARME AQUÍ")
            ========================================================================= */
         .toast-reminder-highlight {
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.16), rgba(30, 58, 138, 0.28));
+            background: var(--card-alt);
             border: 1.5px solid #f59e0b;
             border-radius: 12px;
-            padding: 0.75rem 0.85rem;
-            margin-top: 0.35rem;
+            padding: 0.85rem 0.9rem;
+            margin-top: 0.4rem;
+        }
+        .toast-reminder-highlight p {
+            color: var(--text) !important;
+            font-size: 0.84rem;
+            line-height: 1.5;
+            font-weight: 600;
+            margin: 0 0 0.7rem 0;
         }
         .btn-toast-pincha {
             width: 100%;
@@ -2812,184 +2819,186 @@
             box-shadow: 0 10px 22px rgba(245, 158, 11, 0.5);
         }
 
-        .dossier-spacious-wrapper {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+        .official-dossier-sheet {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #ffffff;
             color: #0f172a;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+            padding: 32px 36px;
+            line-height: 1.6;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            box-shadow: 0 6px 24px rgba(15, 23, 42, 0.07);
         }
-        .dossier-hero-banner {
-            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 65%, #1d4ed8 100%);
-            color: #ffffff;
-            padding: 24px 26px;
-            border-radius: 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
-            box-shadow: 0 12px 28px rgba(15, 23, 42, 0.18);
-        }
-        .dossier-kpi-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-        }
-        @media (max-width: 780px) {
-            .dossier-kpi-grid {
-                grid-template-columns: 1fr;
+        @media (max-width: 720px) {
+            .official-dossier-sheet {
+                padding: 18px 16px;
             }
         }
-        .dossier-kpi-card {
-            background: #ffffff;
-            border: 1.5px solid #e2e8f0;
-            border-radius: 14px;
-            padding: 18px 20px;
-            box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+        .official-doc-header {
+            border-bottom: 2px solid #0f172a;
+            padding-bottom: 18px;
+            margin-bottom: 24px;
         }
-        .dossier-kpi-label {
-            font-size: 11px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.7px;
-            color: #64748b;
-            margin-bottom: 6px;
-        }
-        .dossier-kpi-big {
-            font-size: 24px;
-            font-weight: 900;
-            line-height: 1.15;
-            margin-bottom: 6px;
-        }
-        .dossier-kpi-sub {
-            font-size: 12px;
-            color: #475569;
-            line-height: 1.4;
-        }
-        .dossier-card-block {
-            background: #ffffff;
-            border: 1.5px solid #e2e8f0;
-            border-radius: 16px;
-            padding: 22px 24px;
-            box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
-        }
-        .dossier-block-header {
+        .official-doc-kicker {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 8px;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid #f1f5f9;
+            font-size: 10.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: #475569;
+            margin-bottom: 8px;
         }
-        .dossier-block-title {
-            font-size: 16px;
+        .official-doc-title {
+            font-size: 21px;
             font-weight: 900;
             color: #0f172a;
-            margin: 0;
+            letter-spacing: -0.3px;
+            margin: 0 0 14px 0;
+            line-height: 1.25;
         }
-        .dossier-block-subtitle {
-            font-size: 12.5px;
-            color: #64748b;
-            margin: 2px 0 0 0;
-        }
-        .spectrum-row {
-            margin-bottom: 15px;
-        }
-        .spectrum-row:last-child {
-            margin-bottom: 0;
-        }
-        .spectrum-top-labels {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 12px;
-            margin-bottom: 6px;
-        }
-        .spectrum-pole {
-            font-weight: 700;
-            color: #475569;
-            font-size: 11.5px;
-        }
-        .spectrum-center-badge {
-            font-weight: 900;
-            font-size: 11.5px;
-            color: #1e3a8a;
-            background: #eff6ff;
-            padding: 2px 9px;
-            border-radius: 99px;
-        }
-        .spectrum-bar-track {
-            width: 100%;
-            height: 12px;
-            background: #f1f5f9;
-            border-radius: 99px;
-            overflow: hidden;
-            position: relative;
-            border: 1px solid #cbd5e1;
-        }
-        .spectrum-bar-fill {
-            height: 100%;
-            border-radius: 99px;
-            transition: width 0.4s ease;
-        }
-        .fiscal-visual-grid {
+        .official-meta-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 14px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px 20px;
+            padding-top: 12px;
+            border-top: 1px solid #e2e8f0;
+            font-size: 12px;
         }
         @media (max-width: 720px) {
-            .fiscal-visual-grid {
+            .official-meta-grid {
                 grid-template-columns: 1fr;
             }
         }
-        .fiscal-party-card {
-            background: #f8fafc;
-            border: 1.5px solid #e2e8f0;
-            border-radius: 14px;
-            padding: 15px 17px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+        .official-meta-item span {
+            color: #64748b;
+            font-weight: 600;
+            display: block;
+            font-size: 10.5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-        .fiscal-party-card.is-winner-card {
-            background: #eff6ff;
-            border-color: #3b82f6;
+        .official-meta-item strong {
+            color: #0f172a;
+            font-weight: 800;
+            font-size: 12.5px;
         }
-        .fiscal-party-card.is-best-pocket {
-            background: #f0fdf4;
-            border-color: #22c55e;
-        }
-        .fiscal-pill-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-        .fiscal-mini-pill {
-            background: #ffffff;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            padding: 4px 8px;
-            font-size: 11px;
-            font-weight: 700;
-            color: #334155;
-        }
-        .friction-clean-grid {
+        .official-summary-strip {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 12px;
+            grid-template-columns: repeat(3, 1fr);
+            border-top: 1px solid #cbd5e1;
+            border-bottom: 1px solid #cbd5e1;
+            padding: 16px 0;
+            margin-bottom: 26px;
+            gap: 18px;
         }
-        .friction-clean-card {
-            background: #fffafa;
-            border: 1px solid #fecaca;
-            border-left: 5px solid #ef4444;
-            border-radius: 12px;
-            padding: 14px 16px;
+        @media (max-width: 720px) {
+            .official-summary-strip {
+                grid-template-columns: 1fr;
+            }
+        }
+        .official-summary-col {
+            padding-right: 14px;
+            border-right: 1px solid #e2e8f0;
+        }
+        .official-summary-col:last-child {
+            border-right: none;
+            padding-right: 0;
+        }
+        .official-summary-label {
+            font-size: 10.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #64748b;
+            margin-bottom: 4px;
+        }
+        .official-summary-value {
+            font-size: 20px;
+            font-weight: 900;
+            color: #0f172a;
+            line-height: 1.2;
+            margin-bottom: 3px;
+        }
+        .official-summary-note {
+            font-size: 11.5px;
+            color: #475569;
+        }
+        .official-section {
+            padding: 22px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .official-section:last-child {
+            border-bottom: none;
+            padding-bottom: 6px;
+        }
+        .official-section-heading {
+            font-size: 13.5px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #0f172a;
+            margin: 0 0 14px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .official-section-num {
+            color: #1e3a8a;
+            font-weight: 900;
+        }
+        .official-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12.5px;
+            margin-top: 8px;
+        }
+        .official-table th {
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 2px solid #0f172a;
+            color: #334155;
+            font-weight: 800;
+            font-size: 10.5px;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            background: transparent;
+        }
+        .official-table td {
+            padding: 12px 12px;
+            border-bottom: 1px solid #e2e8f0;
+            color: #1e293b;
+            vertical-align: middle;
+        }
+        .official-table tr.official-row-highlight td {
+            background: #f8fafc;
+            font-weight: 700;
+        }
+        .official-clause-item {
+            padding: 10px 0 10px 14px;
+            border-left: 2px solid #1e3a8a;
+            margin-bottom: 14px;
+        }
+        .official-clause-item:last-child {
+            margin-bottom: 0;
+        }
+        .official-ministry-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px 28px;
+            margin-top: 10px;
+        }
+        @media (max-width: 720px) {
+            .official-ministry-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .official-ministry-item {
+            padding-bottom: 12px;
+            border-bottom: 1px solid #f1f5f9;
         }
     </style>
 </head>
@@ -6705,8 +6714,7 @@
                     hideSupportToast();
                 }, 4200);
             } else {
-                hideSupportToast();
-                enterSection('support');
+                triggerPostQuizSupportRedirectCountdown();
             }
         }
 
@@ -6720,10 +6728,10 @@
             let secLeft = 18;
             toast.style.display = "block";
             inner.innerHTML = `
-                <span class="support-toast-badge">🎉 Resultados listos • Redirección en espera</span>
-                <div class="support-toast-title">Revisa primero tus resultados con calma</div>
+                <span class="support-toast-badge">🎉 ¡Muchas gracias! • Redirección en espera</span>
+                <div class="support-toast-title">Revisa tus resultados o programas con calma</div>
                 <p class="support-toast-desc">
-                    Como nos indicaste que te estaba gustando la página, te llevaremos a <strong>«¿Te está sirviendo la página?»</strong> en <strong id="post-quiz-sec-num">${secLeft}s</strong> para enseñarte tu Dossier de Experto.
+                    Como nos has indicado que te está sirviendo la página, te llevaremos a <strong>«¿Te está sirviendo la página?»</strong> en <strong id="post-quiz-sec-num">${secLeft}s</strong> (o dale a <em>Quedarme aquí</em> para ir cuando tú quieras).
                 </p>
                 <div class="support-toast-actions">
                     <button type="button" class="btn-toast-yes" onclick="goToSupportNowFromToast()">
@@ -6759,10 +6767,10 @@
             if (inner) {
                 inner.innerHTML = `
                     <span class="support-toast-badge">💛 Aviso Importante • Decide29N</span>
-                    <div class="support-toast-title">No olvides que es importante para nosotros que ayudes a la página</div>
+                    <div class="support-toast-title">¡Muchas gracias por haber dicho que sí te está sirviendo!</div>
                     <div class="toast-reminder-highlight">
-                        <p class="support-toast-desc" style="margin-bottom:0.65rem; color:#f8fafc;">
-                            Revisa tus resultados todo el tiempo que quieras. Detrás de esta herramienta hay un <strong>estudiante independiente</strong> y tu apoyo es clave para mantener el servidor activo y llevarte tu <strong>Dossier Visual de Experto</strong>:
+                        <p>
+                            Tómate todo el tiempo que quieras para ver bien tus resultados y cuando quieras ayudar a la página pincha aquí:
                         </p>
                         <button type="button" class="btn-toast-pincha" onclick="goToSupportNowFromToast()">
                             👉 Pincha aquí
@@ -7102,12 +7110,12 @@
             const dateStr = new Date().toLocaleDateString("es-ES", { day: "2-digit", month: "long", year: "numeric" });
 
             const titleEl = document.getElementById("modal-dossier-title");
-            if (titleEl) titleEl.innerText = `📄 Dossier Visual de Experto 29N — ${expert.winner1.name} + Bolsillo`;
+            if (titleEl) titleEl.innerText = `Informe Oficial de Auditoría Político-Fiscal 29N`;
             const tagEl = document.getElementById("modal-dossier-tag");
             if (tagEl) {
                 tagEl.innerText = isDossierUnlocked
-                    ? "✅ Dossier Visual Desbloqueado • Informe Ejecutivo + PDF Infográfico 2 Páginas"
-                    : "🔒 Vista Previa • Aportación de 1,00 € para ayudar a mantener la página";
+                    ? "DOCUMENTO OFICIAL DESBLOQUEADO • EXPEDIENTE 29N-2026"
+                    : "VISTA PREVIA DEL INFORME • APORTACIÓN DE 1,00 € PARA MANTENER LA PÁGINA";
             }
 
             const founderBox = document.getElementById("founder-card-generator-box");
@@ -7116,87 +7124,53 @@
                 if (isDossierUnlocked) setTimeout(() => drawFounderCardCanvas(), 100);
             }
 
-            // 1. Render de las 5 Barras de Espectro (Estilo 16Personalities)
-            const spectrumHtml = expert.spectrumBars.map(bar => {
-                const leftPct = 100 - bar.rightPct;
-                return `
-                    <div class="spectrum-row">
-                        <div class="spectrum-top-labels">
-                            <span class="spectrum-pole">${bar.leftPole} (${leftPct}%)</span>
-                            <span class="spectrum-center-badge">${bar.title}: ${bar.summary}</span>
-                            <span class="spectrum-pole">${bar.rightPole} (${bar.rightPct}%)</span>
-                        </div>
-                        <div class="spectrum-bar-track">
-                            <div class="spectrum-bar-fill" style="width:${bar.rightPct}%; background:${bar.color};"></div>
-                        </div>
-                    </div>
-                `;
-            }).join("");
-
-            // 2. Render de Tarjetas Visuales de Bolsillo por Partido (Cero tablas apretadas)
-            const maxAbsAnnual = Math.max(900, ...expert.fiscalMatrix.map(r => Math.abs(r.totalDiffAnnual)));
-            const fiscalCardsHtml = expert.fiscalMatrix.map(row => {
+            // Tabla comparativa sobria y limpia de impacto fiscal
+            const fiscalRowsHtml = expert.fiscalMatrix.map(row => {
                 const isWinner = row.party === expert.winner1.name;
                 const isBestPocket = row.party === expert.bestFiscalParty.party;
-                const totSign = row.totalDiffAnnual >= 0 ? "+" : "";
-                const mSign = row.totalDiffMonthly >= 0 ? "+" : "";
                 const salSign = row.salaryDiffMonthly >= 0 ? "+" : "";
                 const houseSign = row.housingSavingsMonthly >= 0 ? "+" : "";
                 const famSign = row.familyDiffMonthly >= 0 ? "+" : "";
-                const barWidth = Math.min(100, Math.max(12, Math.round((Math.abs(row.totalDiffAnnual) / maxAbsAnnual) * 100)));
-                const barColor = row.totalDiffAnnual >= 0 ? "#16a34a" : "#dc2626";
-                const cardClass = isBestPocket ? "fiscal-party-card is-best-pocket" : (isWinner ? "fiscal-party-card is-winner-card" : "fiscal-party-card");
+                const totSign = row.totalDiffAnnual >= 0 ? "+" : "";
+                const totColor = row.totalDiffAnnual >= 0 ? "#15803d" : "#b91c1c";
+                let tagNote = "";
+                if (isWinner && isBestPocket) tagNote = " (1ª Opción + Óptimo Fiscal)";
+                else if (isWinner) tagNote = " (1ª Opción Ideológica)";
+                else if (isBestPocket) tagNote = " (Óptimo Fiscal)";
 
                 return `
-                    <div class="${cardClass}">
-                        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
-                            <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
-                                <strong style="font-size:15px; color:#0f172a;">${row.party}</strong>
-                                <span style="font-size:11px; color:#64748b; font-weight:700;">(${row.affinityScore}% afinidad)</span>
-                                ${isWinner ? '<span style="background:#1d4ed8; color:#fff; font-size:9.5px; font-weight:800; padding:2px 7px; border-radius:99px;">TU VOTO</span>' : ''}
-                                ${isBestPocket ? '<span style="background:#15803d; color:#fff; font-size:9.5px; font-weight:800; padding:2px 7px; border-radius:99px;">MEJOR BOLSILLO</span>' : ''}
-                            </div>
-                            <div style="text-align:right;">
-                                <strong style="font-size:16px; font-weight:900; color:${barColor};">${totSign}${row.totalDiffAnnual.toLocaleString('es-ES')} €/año</strong>
-                                <span style="display:block; font-size:10.5px; color:#475569; font-weight:700;">(${mSign}${row.totalDiffMonthly} €/mes)</span>
-                            </div>
-                        </div>
-                        <div style="width:100%; height:8px; background:#e2e8f0; border-radius:99px; overflow:hidden;">
-                            <div style="width:${barWidth}%; height:100%; background:${barColor}; border-radius:99px;"></div>
-                        </div>
-                        <div class="fiscal-pill-row">
-                            <span class="fiscal-mini-pill">💵 Nómina: ${salSign}${row.salaryDiffMonthly} €/mes</span>
-                            <span class="fiscal-mini-pill">🏠 Vivienda: ${houseSign}${row.housingSavingsMonthly} €/mes</span>
-                            <span class="fiscal-mini-pill">👶 Hijos: ${famSign}${row.familyDiffMonthly} €/mes</span>
-                        </div>
-                    </div>
+                    <tr class="${isWinner ? 'official-row-highlight' : ''}">
+                        <td><strong>${row.party}</strong><span style="color:#64748b; font-size:11px; font-weight:600;">${tagNote}</span></td>
+                        <td>${row.affinityScore}%</td>
+                        <td>${row.finalNetMonthly.toLocaleString('es-ES')} €/mes <span style="color:#64748b; font-size:11px;">(${salSign}${row.salaryDiffMonthly} €)</span></td>
+                        <td>${houseSign}${row.housingSavingsMonthly} €/mes</td>
+                        <td>${famSign}${row.familyDiffMonthly} €/mes</td>
+                        <td style="font-weight:800; color:${totColor}; text-align:right;">${totSign}${row.totalDiffAnnual.toLocaleString('es-ES')} €/año</td>
+                    </tr>
                 `;
             }).join("");
 
-            // 3. Render de Top 3 Puntos Ciegos («Letra Pequeña»)
+            // Cláusulas numeradas sobrias de discrepancias programáticas
             const frictionsHtml = expert.frictions.length > 0
-                ? `<div class="friction-clean-grid">` + expert.frictions.map(f => `
-                    <div class="friction-clean-card">
-                        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px; margin-bottom:6px;">
-                            <strong style="color:#991b1b; font-size:13px;">⚠️ ${f.category} ${f.isPriority ? '• ⭐ TEMA PRIORITARIO (x2)' : ''}</strong>
-                            <div style="display:flex; gap:6px; font-size:11px; font-weight:800;">
-                                <span style="background:#dbeafe; color:#1e40af; padding:2px 8px; border-radius:6px;">Tú: ${formatShortStance(f.userVal)}</span>
-                                <span style="background:#fee2e2; color:#991b1b; padding:2px 8px; border-radius:6px;">${expert.winner1.name}: ${formatShortStance(f.partyVal)}</span>
-                            </div>
+                ? expert.frictions.map((f, idx) => `
+                    <div class="official-clause-item">
+                        <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px; margin-bottom:4px;">
+                            <strong style="color:#0f172a; font-size:13px;">Cláusula 3.${idx + 1} — ${f.category}${f.isPriority ? ' (Prioridad x2)' : ''}</strong>
+                            <span style="font-size:11.5px; color:#475569; font-weight:700;">Su postura: ${formatShortStance(f.userVal)} &nbsp;|&nbsp; Programa ${expert.winner1.name}: ${formatShortStance(f.partyVal)}</span>
                         </div>
-                        <p style="font-size:12.5px; color:#334155; margin:0; line-height:1.45;">${f.text}</p>
+                        <p style="font-size:12.5px; color:#334155; margin:0; line-height:1.55;">${f.text}</p>
                     </div>
-                `).join("") + `</div>`
-                : `<div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:12px; padding:14px 16px; font-size:13px; color:#166534;">✅ <strong>Sin contradicciones severas:</strong> Tus respuestas principales están altamente alineadas con el programa marco de ${expert.winner1.name}.</div>`;
+                `).join("")
+                : `<p style="font-size:12.5px; color:#334155; margin:0;">No se registran discrepancias programáticas de carácter severo entre las respuestas emitidas en el cuestionario y el programa marco de <strong>${expert.winner1.name}</strong>.</p>`;
 
-            // 4. Render de Chuleta Electoral y los 6 Ministerios de tu Partido Ideal
-            const idealPillarsHtml = `<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:12px;">` + idealPartyObject.pillars.map(p => `
-                <div style="background:#f8fafc; border:1px solid #cbd5e1; border-top:4px solid #1d4ed8; border-radius:12px; padding:13px 15px;">
-                    <div style="display:flex; justify-content:space-between; align-items:center; gap:6px; margin-bottom:5px;">
-                        <strong style="color:#1e3a8a; font-size:13px;">${p.icon} ${p.area}</strong>
+            // Síntesis sobria por carteras ministeriales
+            const idealPillarsHtml = `<div class="official-ministry-grid">` + idealPartyObject.pillars.map(p => `
+                <div class="official-ministry-item">
+                    <div style="display:flex; justify-content:space-between; align-items:baseline; gap:8px; margin-bottom:3px;">
+                        <strong style="color:#0f172a; font-size:13px;">${removeEmojisForVectorPDF(p.area)}</strong>
+                        <span style="color:#1e3a8a; font-size:11px; font-weight:700;">${removeEmojisForVectorPDF(p.ref)}</span>
                     </div>
-                    <p style="font-size:12px; color:#334155; margin:0 0 8px 0; line-height:1.4;">${p.stance}</p>
-                    <span style="background:#e0e7ff; color:#1d4ed8; font-size:10.5px; font-weight:800; padding:3px 8px; border-radius:6px; display:inline-block;">👤 ${p.ref}</span>
+                    <p style="font-size:12px; color:#475569; margin:0; line-height:1.5;">${p.stance}</p>
                 </div>
             `).join("") + `</div>`;
 
@@ -7204,14 +7178,14 @@
                 <div class="lock-overlay-cta" onclick="proceedToDonationPayment()">
                     <div class="lock-circle-icon">🔒</div>
                     <div class="lock-overlay-box">
-                        <strong style="font-size:1.08rem; display:block; margin-bottom:0.35rem; color:#fbbf24;">
-                            Desbloquea tu Dossier Visual de Experto (Ideas + Bolsillo)
+                        <strong style="font-size:1.05rem; display:block; margin-bottom:0.35rem; color:#fbbf24;">
+                            Desbloquear Informe Oficial Completo (Documento + PDF A4)
                         </strong>
-                        <p style="font-size:0.84rem; color:#e2e8f0; margin-bottom:0.8rem; line-height:1.5;">
-                            Con tu <strong>aportación de 1,00 € para ayudar a este proyecto de un estudiante independiente</strong>, desbloqueas las 5 barras de tu ADN Político, las tarjetas visuales de ahorro en los 6 partidos, la «Letra Pequeña» de tu voto y descargas el <strong>PDF Infográfico de 2 páginas A4</strong>.
+                        <p style="font-size:0.83rem; color:#e2e8f0; margin-bottom:0.8rem; line-height:1.5;">
+                            Con tu <strong>aportación de 1,00 € para ayudar al mantenimiento de Decide29N</strong>, accedes al documento íntegro con el dictamen Voto vs. Bolsillo, el estudio tributario en las 6 formaciones, la auditoría de discrepancias y su descarga en <strong>PDF Oficial de 2 páginas A4</strong>.
                         </p>
-                        <span style="background:#f59e0b; color:#000; font-weight:900; font-size:0.86rem; padding:0.55rem 1.15rem; border-radius:10px; display:inline-block;">
-                            ❤️ Aportar 1,00 € y Generar mi Dossier de Experto →
+                        <span style="background:#f59e0b; color:#000; font-weight:900; font-size:0.85rem; padding:0.52rem 1.15rem; border-radius:8px; display:inline-block;">
+                            Aportar 1,00 € y Emitir Informe Completo →
                         </span>
                     </div>
                 </div>
@@ -7219,127 +7193,120 @@
 
             const winAnnualStr = `${expert.winnerFiscalObj.totalDiffAnnual >= 0 ? '+' : ''}${expert.winnerFiscalObj.totalDiffAnnual.toLocaleString('es-ES')} €/año`;
             const bestAnnualStr = `${expert.bestFiscalParty.totalDiffAnnual >= 0 ? '+' : ''}${expert.bestFiscalParty.totalDiffAnnual.toLocaleString('es-ES')} €/año`;
+            const isAligned = expert.bestFiscalParty.party === expert.winner1.name || expert.annualGap <= 150;
 
             return `
-                <div class="dossier-spacious-wrapper">
-                    <!-- CABECERA EJECUTIVA -->
-                    <div class="dossier-hero-banner">
-                        <div>
-                            <div style="font-size:11px; text-transform:uppercase; letter-spacing:1px; color:#93c5fd; font-weight:800; margin-bottom:4px;">
-                                Dossier Visual de Experto 29N • Informe Ejecutivo Personalizado
-                            </div>
-                            <h3 style="font-size:20px; margin:0 0 6px 0; color:#ffffff; font-weight:900;">
-                                Tu Radiografía Electoral y de Bolsillo (${dateStr})
-                            </h3>
-                            <div style="font-size:12.5px; color:#fbbf24; font-weight:700;">
-                                Arquetipo: ${finalArchetype} • Perfil Fiscal: ${pocketRealSalary.toLocaleString('es-ES')} €/año (${pocketRealHousing.toUpperCase()}, ${pocketRealKids} hijos)
-                            </div>
+                <div class="official-dossier-sheet">
+                    <!-- ENCABEZADO INSTITUCIONAL DE DOCUMENTO OFICIAL -->
+                    <div class="official-doc-header">
+                        <div class="official-doc-kicker">
+                            <span>DECIDE29N • UNIDAD DE ANÁLISIS ELECTORAL Y TRIBUTARIO</span>
+                            <span>EXPEDIENTE Nº 29N-${Math.abs(Math.round(finalUserX * 100))}-${expert.winner1.score}</span>
                         </div>
-                        <div style="background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.25); padding:10px 16px; border-radius:12px; text-align:right;">
-                            <span style="font-size:10px; text-transform:uppercase; color:#cbd5e1; font-weight:800; display:block;">Partido Ideal a Medida</span>
-                            <strong style="font-size:14px; color:#ffffff;">🏛️ ${idealPartyObject.partyName}</strong>
-                        </div>
-                    </div>
-
-                    <!-- NIVEL 1: 3 GRANDES TARJETAS KPI EJECUTIVAS -->
-                    <div class="dossier-kpi-grid">
-                        <div class="dossier-kpi-card" style="border-top:4px solid #2563eb;">
-                            <div>
-                                <div class="dossier-kpi-label">🗳️ 1. Tu Voto por Ideas</div>
-                                <div class="dossier-kpi-big" style="color:#1e3a8a;">${expert.winner1.name} (${expert.winner1.score}%)</div>
+                        <h3 class="official-doc-title">
+                            Informe Técnico de Afinidad Programática e Impacto Económico Personal
+                        </h3>
+                        <div class="official-meta-grid">
+                            <div class="official-meta-item">
+                                <span>Fecha de Emisión</span>
+                                <strong>${dateStr}</strong>
                             </div>
-                            <div class="dossier-kpi-sub">
-                                2ª opción: <strong>${expert.winner2.name} (${expert.winner2.score}%)</strong> · 3ª opción: <strong>${expert.winner3.name} (${expert.winner3.score}%)</strong>
+                            <div class="official-meta-item">
+                                <span>Perfil Ideológico Detectado</span>
+                                <strong>${removeEmojisForVectorPDF(finalArchetype)} (X: ${finalUserX.toFixed(2)}, Y: ${finalUserY.toFixed(2)})</strong>
                             </div>
-                        </div>
-
-                        <div class="dossier-kpi-card" style="border-top:4px solid #16a34a;">
-                            <div>
-                                <div class="dossier-kpi-label">💶 2. Mejor para tu Bolsillo</div>
-                                <div class="dossier-kpi-big" style="color:#15803d;">${expert.bestFiscalParty.party} (${bestAnnualStr})</div>
-                            </div>
-                            <div class="dossier-kpi-sub">
-                                Con tu partido ideológico (${expert.winner1.name}) tu balance es de <strong>${winAnnualStr}</strong>.
-                            </div>
-                        </div>
-
-                        <div class="dossier-kpi-card" style="border-top:4px solid #f59e0b; background:${expert.coherenceBg};">
-                            <div>
-                                <div class="dossier-kpi-label">⚖️ 3. Coherencia Voto vs. Cartera</div>
-                                <div class="dossier-kpi-big" style="font-size:18px; color:${expert.coherenceColor};">${expert.coherenceShortBadge}</div>
-                            </div>
-                            <div class="dossier-kpi-sub">
-                                Cruce matemático entre tus 30 respuestas y tu simulación de IRPF y vivienda.
+                            <div class="official-meta-item">
+                                <span>Parámetros Fiscales Registrados</span>
+                                <strong>${pocketRealSalary.toLocaleString('es-ES')} €/año · ${pocketRealHousing.toUpperCase()} (${pocketRealCost} €/mes) · ${pocketRealKids} Hijo(s)</strong>
                             </div>
                         </div>
                     </div>
 
-                    <!-- MÓDULO 1 (ABIERTO EN VISTA PREVIA): BRÚJULA 2D + AVANCE DE ADN POLÍTICO -->
-                    <div class="dossier-card-block" style="display:grid; grid-template-columns: 145px 1fr; gap:20px; align-items:center;">
-                        <img src="${compassImg}" style="width:140px; height:140px; border:1.5px solid #cbd5e1; border-radius:12px; background:#fff;" alt="Brújula 2D">
-                        <div>
-                            <h4 class="dossier-block-title" style="margin-bottom:6px;">🧭 Posicionamiento en la Brújula Política 2D</h4>
-                            <p style="font-size:13px; color:#334155; margin:0 0 10px 0; line-height:1.55;">
-                                Tus respuestas sitúan tu <strong>Eje Económico (X) en ${finalUserX.toFixed(2)}</strong> (${econPercent}% Libre Mercado vs. ${100 - econPercent}% Estado) y tu <strong>Eje Social/Territorial (Y) en ${finalUserY.toFixed(2)}</strong> (${socPercent}% Conservador/Centralista vs. ${100 - socPercent}% Progresista/Plurinacional).
-                            </p>
-                            <div style="display:flex; gap:8px; flex-wrap:wrap;">
-                                <span style="background:#eff6ff; color:#1d4ed8; font-size:11.5px; font-weight:800; padding:4px 10px; border-radius:8px;">🥇 1º ${expert.winner1.name}: ${expert.winner1.score}%</span>
-                                <span style="background:#f1f5f9; color:#334155; font-size:11.5px; font-weight:800; padding:4px 10px; border-radius:8px;">🥈 2º ${expert.winner2.name}: ${expert.winner2.score}%</span>
-                                <span style="background:#f1f5f9; color:#334155; font-size:11.5px; font-weight:800; padding:4px 10px; border-radius:8px;">🥉 3º ${expert.winner3.name}: ${expert.winner3.score}%</span>
+                    <!-- BANDA DE SÍNTESIS EJECUTIVA (SIN CAJAS DE COLORES) -->
+                    <div class="official-summary-strip">
+                        <div class="official-summary-col">
+                            <div class="official-summary-label">1ª Opción por Ideas</div>
+                            <div class="official-summary-value">${expert.winner1.name} (${expert.winner1.score}%)</div>
+                            <div class="official-summary-note">2ª opción: ${expert.winner2.name} (${expert.winner2.score}%) · 3ª: ${expert.winner3.name} (${expert.winner3.score}%)</div>
+                        </div>
+                        <div class="official-summary-col">
+                            <div class="official-summary-label">Óptimo Fiscal Estimado</div>
+                            <div class="official-summary-value" style="color:#15803d;">${expert.bestFiscalParty.party} (${bestAnnualStr})</div>
+                            <div class="official-summary-note">Impacto con ${expert.winner1.name}: <strong>${winAnnualStr}</strong></div>
+                        </div>
+                        <div class="official-summary-col">
+                            <div class="official-summary-label">Dictamen Voto vs. Renta</div>
+                            <div class="official-summary-value" style="font-size:16.5px; color:${isAligned ? '#15803d' : '#b45309'};">
+                                ${isAligned ? 'Convergencia Plena' : `Desviación de ${expert.annualGap.toLocaleString('es-ES')} €/año`}
+                            </div>
+                            <div class="official-summary-note">${isAligned ? 'Su voto ideológico optimiza su renta neta' : `${expert.bestFiscalParty.party} mejora el retorno de ${expert.winner1.name}`}</div>
+                        </div>
+                    </div>
+
+                    <!-- SECCIÓN I (VISIBLE EN VISTA PREVIA): POSICIONAMIENTO EN LA BRÚJULA 2D -->
+                    <div class="official-section" style="padding-top:4px;">
+                        <h4 class="official-section-heading">
+                            <span class="official-section-num">I.</span> Posicionamiento Ideológico y Coordenadas en el Mapa 2D
+                        </h4>
+                        <div style="display:grid; grid-template-columns: 135px 1fr; gap:22px; align-items:center;">
+                            <img src="${compassImg}" style="width:130px; height:130px; border:1px solid #cbd5e1; padding:4px; background:#fff;" alt="Mapa 2D">
+                            <div>
+                                <p style="font-size:13px; color:#1e293b; margin:0 0 10px 0; line-height:1.6;">
+                                    Del análisis ponderado de sus respuestas se desprende una ubicación en el <strong>Eje Económico (X) de ${finalUserX.toFixed(2)} puntos</strong> (${econPercent}% de inclinación hacia libre mercado y desregulación frente a un ${100 - econPercent}% de intervención pública) y en el <strong>Eje Social y Territorial (Y) de ${finalUserY.toFixed(2)} puntos</strong> (${socPercent}% conservador/centralista frente a un ${100 - socPercent}% progresista/plurinacional).
+                                </p>
+                                <p style="font-size:12.5px; color:#475569; margin:0;">
+                                    <strong>Formación de máxima convergencia programática:</strong> ${expert.winner1.name} (${expert.winner1.score}% de coincidencia), seguida de ${expert.winner2.name} (${expert.winner2.score}%) y ${expert.winner3.name} (${expert.winner3.score}%).
+                                </p>
                             </div>
                         </div>
                     </div>
 
+                    <!-- SECCIONES II, III Y IV (PROTEGIDAS EN VISTA PREVIA HASTA DESBLOQUEO) -->
                     <div class="locked-blur-container" style="margin-top:0;">
-                        <div class="${!isDossierUnlocked ? 'is-blurred-content' : ''}" style="display:flex; flex-direction:column; gap:20px;">
-                            <!-- MÓDULO 2: LAS 5 BARRAS DE ESPECTRO (ESTILO 16PERSONALITIES) -->
-                            <div class="dossier-card-block">
-                                <div class="dossier-block-header">
-                                    <div>
-                                        <h4 class="dossier-block-title">🧬 Tu ADN Político en 5 Dimensiones (0% – 100%)</h4>
-                                        <p class="dossier-block-subtitle">Síntesis visual de tus posturas sin necesidad de releer las 30 preguntas del cuestionario</p>
-                                    </div>
-                                    <span style="background:#eff6ff; color:#1d4ed8; font-size:11px; font-weight:800; padding:4px 10px; border-radius:99px;">Radiografía por Bloques</span>
-                                </div>
-                                ${spectrumHtml}
-                            </div>
-
-                            <!-- MÓDULO 3: DIAGNÓSTICO Y TARJETAS VISUALES DE BOLSILLO -->
-                            <div class="dossier-card-block">
-                                <div class="dossier-block-header">
-                                    <div>
-                                        <h4 class="dossier-block-title">💶 Impacto Anual en tu Bolsillo por Partido (€/año y €/mes)</h4>
-                                        <p class="dossier-block-subtitle">Simulación calculada para ${pocketRealSalary.toLocaleString('es-ES')} €/año brutos · ${pocketRealHousing.toUpperCase()} (${pocketRealCost} €/mes) · ${pocketRealKids} hijo(s)</p>
-                                    </div>
-                                </div>
-                                <div style="background:${expert.coherenceBg}; border:1.5px solid #cbd5e1; border-left:5px solid ${expert.coherenceColor}; border-radius:12px; padding:14px 16px; margin-bottom:16px;">
-                                    <strong style="color:${expert.coherenceColor}; font-size:13.5px; display:block; margin-bottom:4px;">${expert.coherenceTitle}</strong>
-                                    <p style="font-size:12.5px; color:#1e293b; margin:0; line-height:1.5;">${expert.coherenceVerdict}</p>
-                                </div>
-                                <div class="fiscal-visual-grid">
-                                    ${fiscalCardsHtml}
+                        <div class="${!isDossierUnlocked ? 'is-blurred-content' : ''}">
+                            <!-- SECCIÓN II: DICTAMEN DE COHERENCIA Y TABLA TRIBUTARIA -->
+                            <div class="official-section">
+                                <h4 class="official-section-heading">
+                                    <span class="official-section-num">II.</span> Dictamen de Coherencia Político-Tributaria y Estudio de Renta
+                                </h4>
+                                <p style="font-size:13px; color:#1e293b; margin:0 0 16px 0; line-height:1.6; padding-left:14px; border-left:2px solid #0f172a;">
+                                    ${removeEmojisForVectorPDF(expert.coherenceVerdict)}
+                                </p>
+                                <div style="overflow-x:auto;">
+                                    <table class="official-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Formación Política</th>
+                                                <th>Afinidad</th>
+                                                <th>Nómina Neta / IRPF</th>
+                                                <th>Vivienda</th>
+                                                <th>Familia</th>
+                                                <th style="text-align:right;">Balance Anual Neto</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            ${fiscalRowsHtml}
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
 
-                            <!-- MÓDULO 4: LA LETRA PEQUEÑA DE TU VOTO (TOP 3 FRICCIONES) -->
-                            <div class="dossier-card-block">
-                                <div class="dossier-block-header">
-                                    <div>
-                                        <h4 class="dossier-block-title">🚨 La «Letra Pequeña» de tu Voto: Tus 3 Puntos Ciegos con ${expert.winner1.name}</h4>
-                                        <p class="dossier-block-subtitle">Los 3 debates clave donde tu opinión choca directamente con el programa oficial de tu partido más afín</p>
-                                    </div>
-                                </div>
+                            <!-- SECCIÓN III: AUDITORÍA DE DISCREPANCIAS PROGRAMÁTICAS -->
+                            <div class="official-section">
+                                <h4 class="official-section-heading">
+                                    <span class="official-section-num">III.</span> Auditoría de Discrepancias con su 1ª Opción (${expert.winner1.name})
+                                </h4>
+                                <p style="font-size:12.5px; color:#475569; margin:0 0 14px 0;">
+                                    Puntos críticos donde la postura declarada por el votante diverge de las medidas recogidas en el programa oficial de <strong>${expert.winner1.name}</strong>:
+                                </p>
                                 ${frictionsHtml}
                             </div>
 
-                            <!-- MÓDULO 5: CHULETA ELECTORAL 29N Y TU PARTIDO IDEAL A MEDIDA -->
-                            <div class="dossier-card-block">
-                                <div class="dossier-block-header">
-                                    <div>
-                                        <h4 class="dossier-block-title">🏛️ Tu «Chuleta Electoral 29N»: Consejo de Ministros de tu Partido Ideal (${idealPartyObject.partyAcronym})</h4>
-                                        <p class="dossier-block-subtitle">Qué líder y qué partido defiende mejor cada área de tu vida según tus respuestas</p>
-                                    </div>
-                                </div>
+                            <!-- SECCIÓN IV: ESTRUCTURA PROGRAMÁTICA DE SU PARTIDO IDEAL -->
+                            <div class="official-section">
+                                <h4 class="official-section-heading">
+                                    <span class="official-section-num">IV.</span> Síntesis por Áreas de Gobierno — Modelo Ideal (${idealPartyObject.partyName})
+                                </h4>
                                 ${idealPillarsHtml}
                             </div>
                         </div>
@@ -7354,14 +7321,14 @@
             if (!container || !isDossierUnlocked) return;
             container.style.display = "block";
             container.innerHTML = `
-                <div style="background:var(--card); border:2px solid #10b981; border-radius:18px; padding:1.5rem; box-shadow:var(--shadow);">
-                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem; margin-bottom:1rem; padding-bottom:0.85rem; border-bottom:1px solid var(--border);">
+                <div style="background:#ffffff; border:1.5px solid #cbd5e1; border-radius:14px; padding:1.5rem; box-shadow:var(--shadow);">
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem; margin-bottom:1rem; padding-bottom:0.85rem; border-bottom:1px solid #e2e8f0;">
                         <div>
-                            <span class="status-pill-ready">✅ Dossier Visual Desbloqueado</span>
-                            <h3 style="font-size:1.3rem; color:var(--text); margin-top:0.3rem;">Tu Informe Ejecutivo de Inteligencia Electoral y Fiscal 29N</h3>
+                            <span class="status-pill-ready">✅ Documento Oficial Emitido</span>
+                            <h3 style="font-size:1.25rem; color:#0f172a; margin-top:0.3rem;">Informe Técnico de Auditoría Electoral y Tributaria 29N</h3>
                         </div>
                         <button type="button" class="btn-primary-large" onclick="generateAndDownloadRealPDF()" style="padding:0.65rem 1.2rem; font-size:0.86rem;">
-                            📥 Descargar Dossier Visual en PDF (2 Páginas A4)
+                            📥 Descargar Informe Oficial en PDF (2 Páginas A4)
                         </button>
                     </div>
                     ${buildPdfPreviewModalHTML()}
@@ -7382,7 +7349,7 @@
             if (STRIPE_PAYMENT_LINK_URL && STRIPE_PAYMENT_LINK_URL.trim() !== "") {
                 window.location.href = STRIPE_PAYMENT_LINK_URL;
             } else {
-                alert("❤️ APORTACIÓN DE 1,00 € PARA AYUDAR A LA PÁGINA:\n\nCuando pegues tu enlace de Stripe en la constante STRIPE_PAYMENT_LINK_URL, este botón llevará al pago seguro de 1,00 €.\n\nComo estás en modo prueba, se va a desbloquear ahora mismo tu nuevo Dossier Visual de Experto en pantalla, tu Carné de Fundador y se descargará el PDF Infográfico de 2 páginas A4.");
+                alert("❤️ APORTACIÓN DE 1,00 € PARA AYUDAR A LA PÁGINA:\n\nCuando pegues tu enlace de Stripe en la constante STRIPE_PAYMENT_LINK_URL, este botón llevará al pago seguro de 1,00 €.\n\nComo estás en modo prueba, se va a desbloquear ahora mismo tu Informe Oficial de Experto en pantalla, tu Carné de Fundador y se descargará el PDF Oficial de 2 páginas A4.");
                 unlockAndDownloadDemoPDF();
             }
         }
@@ -7397,7 +7364,7 @@
         }
 
         /* =========================================================================
-           GENERADOR DE PDF INFOGRÁFICO DE EXPERTO (2 PÁGINAS A4 LIMPIAS Y VISUALES)
+           GENERADOR DE PDF OFICIAL DE EXPERTO (2 PÁGINAS A4 SOBRIAS Y ELEGANTES)
            ========================================================================= */
         function hexToRgbArray(hex) {
             const clean = hex.replace("#", "");
@@ -7413,31 +7380,34 @@
         function drawVectorHeaderFooterAndWatermarks(pdf, pageNumber, totalPages, partyNameClean) {
             pdf.saveGraphicsState();
             if (window.jspdf && window.jspdf.GState) {
-                pdf.setGState(new window.jspdf.GState({ opacity: 0.035 }));
+                pdf.setGState(new window.jspdf.GState({ opacity: 0.025 }));
             }
             pdf.setFont("helvetica", "bold");
-            pdf.setFontSize(24);
-            pdf.setTextColor(30, 58, 138);
-            pdf.text("ELECCIONES29NTEST.ES   •   DOSSIER VISUAL", 30, 105, { angle: 32 });
-            pdf.text("ELECCIONES29NTEST.ES   •   DOSSIER VISUAL", 30, 205, { angle: 32 });
+            pdf.setFontSize(22);
+            pdf.setTextColor(15, 23, 42);
+            pdf.text("DECIDE29N   •   INFORME OFICIAL DE AUDITORIA", 30, 110, { angle: 32 });
+            pdf.text("DECIDE29N   •   INFORME OFICIAL DE AUDITORIA", 30, 210, { angle: 32 });
             pdf.restoreGraphicsState();
 
             pdf.setFont("helvetica", "bold");
-            pdf.setFontSize(8);
-            pdf.setTextColor(100, 116, 139);
-            pdf.text(`DOSSIER VISUAL DE EXPERTO 29N • INFORME EJECUTIVO (${partyNameClean.toUpperCase()})`, 14, 10.5);
-            pdf.text("elecciones29ntest.es", 196, 10.5, { align: "right" });
+            pdf.setFontSize(7.5);
+            pdf.setTextColor(71, 85, 105);
+            pdf.text(`DECIDE29N • UNIDAD DE ANALISIS ELECTORAL Y TRIBUTARIO • EXPEDIENTE OFICIAL`, 15, 11);
+            pdf.text("elecciones29ntest.es", 195, 11, { align: "right" });
+
+            pdf.setDrawColor(15, 23, 42);
+            pdf.setLineWidth(0.4);
+            pdf.line(15, 13.5, 195, 13.5);
 
             pdf.setDrawColor(203, 213, 225);
-            pdf.setLineWidth(0.35);
-            pdf.line(14, 13, 196, 13);
-
-            pdf.line(14, 283, 196, 283);
-            pdf.setFont("helvetica", "bold");
-            pdf.setFontSize(8);
+            pdf.setLineWidth(0.3);
+            pdf.line(15, 282, 195, 282);
+            pdf.setFont("helvetica", "normal");
+            pdf.setFontSize(7.5);
             pdf.setTextColor(100, 116, 139);
-            pdf.text("Dossier personalizado generado en elecciones29ntest.es • Gracias por apoyar este proyecto independiente", 14, 288);
-            pdf.text(`Pagina ${pageNumber} de ${totalPages}`, 196, 288, { align: "right" });
+            pdf.text("Documento tecnico emitido en elecciones29ntest.es • Gracias por apoyar la independencia del proyecto", 15, 287);
+            pdf.setFont("helvetica", "bold");
+            pdf.text(`Pagina ${pageNumber} de ${totalPages}`, 195, 287, { align: "right" });
         }
 
         function generateAndDownloadRealPDF() {
@@ -7446,7 +7416,7 @@
             const btn = document.getElementById("btn-generate-pdf");
             const originalText = btn ? btn.innerText : "";
             if (btn) {
-                btn.innerText = "⏳ Generando Dossier Infográfico (2 Páginas)...";
+                btn.innerText = "⏳ Emitiendo Informe Oficial en PDF (2 Páginas)...";
                 btn.disabled = true;
             }
 
@@ -7460,280 +7430,286 @@
             const winner2 = expert.winner2;
             const partyNameClean = removeEmojisForVectorPDF(idealPartyObject.partyName);
             const totalPages = 2;
+            const isAligned = expert.bestFiscalParty.party === winner1.name || expert.annualGap <= 150;
 
-            // ==================== PÁGINA 1: RESUMEN EJECUTIVO + BRÚJULA 2D + 5 BARRAS DE ADN POLÍTICO ====================
+            // ==================== PÁGINA 1: ENCABEZADO OFICIAL + SÍNTESIS + BRÚJULA + CUADRO FISCAL ====================
             drawVectorHeaderFooterAndWatermarks(pdf, 1, totalPages, partyNameClean);
 
-            // Cabecera Principal
-            pdf.setFillColor(15, 23, 42);
-            pdf.roundedRect(14, 16, 182, 28, 3, 3, "F");
-
+            // Título del Documento Oficial (sobre fondo blanco limpio)
             pdf.setFont("helvetica", "bold");
-            pdf.setFontSize(8);
-            pdf.setTextColor(147, 197, 253);
-            pdf.text(`DOSSIER VISUAL DE EXPERTO 29N • RADIOGRAFIA POLITICA Y DE BOLSILLO • ${dateStr.toUpperCase()}`, 19, 22.5);
-
-            pdf.setFont("helvetica", "bold");
-            pdf.setFontSize(14);
-            pdf.setTextColor(255, 255, 255);
-            pdf.text(`Tu Voto Ideologico: ${winner1.name} (${winner1.score}%)   |   Mejor Bolsillo: ${expert.bestFiscalParty.party} (${expert.bestFiscalParty.totalDiffAnnual >= 0 ? '+' : ''}${expert.bestFiscalParty.totalDiffAnnual} EUR/ano)`, 19, 31);
-
-            pdf.setFont("helvetica", "normal");
-            pdf.setFontSize(8.8);
-            pdf.setTextColor(251, 191, 36);
-            pdf.text(`Arquetipo: ${removeEmojisForVectorPDF(finalArchetype)} • Sueldo Bruto: ${pocketRealSalary.toLocaleString('es-ES')} EUR/ano • Vivienda: ${pocketRealHousing.toUpperCase()} (${pocketRealCost} EUR/mes) • Hijos: ${pocketRealKids}`, 19, 39);
-
-            // 3 Tarjetas KPI Ejecutivas
-            const kpiW = 58;
-            // KPI 1
-            pdf.setFillColor(239, 246, 255);
-            pdf.setDrawColor(147, 197, 253);
-            pdf.roundedRect(14, 48, kpiW, 24, 2.5, 2.5, "FD");
-            pdf.setFont("helvetica", "bold");
-            pdf.setFontSize(7.5);
-            pdf.setTextColor(30, 64, 175);
-            pdf.text("1. TU VOTO POR IDEAS", 18, 54);
-            pdf.setFontSize(13);
+            pdf.setFontSize(15);
             pdf.setTextColor(15, 23, 42);
-            pdf.text(`${winner1.name} (${winner1.score}%)`, 18, 62);
-            pdf.setFont("helvetica", "normal");
-            pdf.setFontSize(7.5);
-            pdf.setTextColor(71, 85, 105);
-            pdf.text(`2o ${winner2.name} (${winner2.score}%) • 3o ${expert.winner3.name} (${expert.winner3.score}%)`, 18, 68.5);
+            pdf.text("Informe Tecnico de Afinidad Programatica e Impacto Economico", 15, 22);
 
-            // KPI 2
-            pdf.setFillColor(240, 253, 244);
-            pdf.setDrawColor(134, 239, 172);
-            pdf.roundedRect(76, 48, kpiW, 24, 2.5, 2.5, "FD");
+            pdf.setFont("helvetica", "normal");
+            pdf.setFontSize(8.5);
+            pdf.setTextColor(71, 85, 105);
+            pdf.text(`Fecha de emision: ${dateStr}   |   Arquetipo: ${removeEmojisForVectorPDF(finalArchetype)} (X: ${finalUserX.toFixed(2)}, Y: ${finalUserY.toFixed(2)})`, 15, 28);
+            pdf.text(`Parametros auditados: Renta Bruta ${pocketRealSalary.toLocaleString('es-ES')} EUR/ano   |   Vivienda: ${pocketRealHousing.toUpperCase()} (${pocketRealCost} EUR/mes)   |   Hijos: ${pocketRealKids}`, 15, 33);
+
+            pdf.setDrawColor(15, 23, 42);
+            pdf.setLineWidth(0.5);
+            pdf.line(15, 36.5, 195, 36.5);
+
+            // Banda de 3 Indicadores Ejecutivos (Separados por líneas finas, sin cajas de colores)
             pdf.setFont("helvetica", "bold");
             pdf.setFontSize(7.5);
-            pdf.setTextColor(21, 128, 61);
-            pdf.text("2. MEJOR PARA TU BOLSILLO", 80, 54);
-            pdf.setFontSize(13);
-            pdf.setTextColor(21, 128, 61);
-            pdf.text(`${expert.bestFiscalParty.party} (${expert.bestFiscalParty.totalDiffAnnual >= 0 ? '+' : ''}${expert.bestFiscalParty.totalDiffAnnual} EUR)`, 80, 62);
-            pdf.setFont("helvetica", "normal");
-            pdf.setFontSize(7.5);
-            pdf.setTextColor(71, 85, 105);
-            pdf.text(`Con ${winner1.name}: ${expert.winnerFiscalObj.totalDiffAnnual >= 0 ? '+' : ''}${expert.winnerFiscalObj.totalDiffAnnual} EUR/ano`, 80, 68.5);
+            pdf.setTextColor(100, 116, 139);
+            pdf.text("1A OPCION POR IDEAS", 15, 42.5);
+            pdf.text("OPTIMO FISCAL ESTIMADO", 78, 42.5);
+            pdf.text("DICTAMEN VOTO VS. RENTA", 141, 42.5);
 
-            // KPI 3
-            const isAligned = expert.bestFiscalParty.party === winner1.name || expert.annualGap <= 150;
-            pdf.setFillColor(isAligned ? 240 : 255, isAligned ? 253 : 251, isAligned ? 244 : 235);
-            pdf.setDrawColor(isAligned ? 134 : 252, isAligned ? 239 : 211, isAligned ? 172 : 77);
-            pdf.roundedRect(138, 48, kpiW, 24, 2.5, 2.5, "FD");
             pdf.setFont("helvetica", "bold");
-            pdf.setFontSize(7.5);
+            pdf.setFontSize(12.5);
+            pdf.setTextColor(15, 23, 42);
+            pdf.text(`${winner1.name} (${winner1.score}%)`, 15, 49);
+
+            pdf.setTextColor(21, 128, 61);
+            pdf.text(`${expert.bestFiscalParty.party} (${expert.bestFiscalParty.totalDiffAnnual >= 0 ? '+' : ''}${expert.bestFiscalParty.totalDiffAnnual} EUR/ano)`, 78, 49);
+
             pdf.setTextColor(isAligned ? 21 : 180, isAligned ? 128 : 83, isAligned ? 61 : 9);
-            pdf.text("3. VOTO VS. BOLSILLO", 142, 54);
-            pdf.setFontSize(10.5);
-            pdf.text(isAligned ? "ALINEACION PLENA" : `DIFERENCIA: ${expert.annualGap} EUR/ANO`, 142, 62);
-            pdf.setFont("helvetica", "normal");
-            pdf.setFontSize(7.5);
-            pdf.setTextColor(71, 85, 105);
-            pdf.text(isAligned ? "Tu voto protege tu renta" : `${expert.bestFiscalParty.party} maximiza tu nomina`, 142, 68.5);
+            pdf.text(isAligned ? "Convergencia Plena" : `Desviacion: ${expert.annualGap} EUR/ano`, 141, 49);
 
-            // Bloque Brújula 2D
-            pdf.setFillColor(248, 250, 252);
+            pdf.setFont("helvetica", "normal");
+            pdf.setFontSize(7.8);
+            pdf.setTextColor(71, 85, 105);
+            pdf.text(`2a: ${winner2.name} (${winner2.score}%) · 3a: ${expert.winner3.name} (${expert.winner3.score}%)`, 15, 54.5);
+            pdf.text(`Balance con ${winner1.name}: ${expert.winnerFiscalObj.totalDiffAnnual >= 0 ? '+' : ''}${expert.winnerFiscalObj.totalDiffAnnual} EUR/ano`, 78, 54.5);
+            pdf.text(isAligned ? "Su voto ideologico protege su renta" : `${expert.bestFiscalParty.party} maximiza su renta neta`, 141, 54.5);
+
             pdf.setDrawColor(203, 213, 225);
-            pdf.roundedRect(14, 77, 182, 50, 3, 3, "FD");
+            pdf.setLineWidth(0.3);
+            pdf.line(74, 39, 74, 56);
+            pdf.line(137, 39, 137, 56);
+            pdf.line(15, 58, 195, 58);
+
+            // SECCIÓN I: POSICIONAMIENTO EN LA BRÚJULA 2D
+            pdf.setFont("helvetica", "bold");
+            pdf.setFontSize(10.5);
+            pdf.setTextColor(15, 23, 42);
+            pdf.text("I. POSICIONAMIENTO IDEOLOGICO Y COORDENADAS EN EL MAPA 2D", 15, 65.5);
 
             const compassCanvasEl = document.getElementById("compassCanvas");
             if (compassCanvasEl) {
                 const compassDataUrl = compassCanvasEl.toDataURL("image/png");
-                pdf.setFillColor(255, 255, 255);
-                pdf.roundedRect(18, 80, 44, 44, 2, 2, "FD");
-                pdf.addImage(compassDataUrl, "PNG", 19, 81, 42, 42);
+                pdf.setDrawColor(203, 213, 225);
+                pdf.rect(15, 69, 42, 42);
+                pdf.addImage(compassDataUrl, "PNG", 16, 70, 40, 40);
             }
-
-            pdf.setFont("helvetica", "bold");
-            pdf.setFontSize(11);
-            pdf.setTextColor(30, 58, 138);
-            pdf.text("Posicionamiento en la Brujula Politica 2D", 68, 86);
 
             pdf.setFont("helvetica", "normal");
             pdf.setFontSize(8.8);
-            pdf.setTextColor(51, 65, 85);
-            const summaryParagraph = `Tus respuestas situan tu Eje Economico en X: ${finalUserX.toFixed(2)} (${econPercent}% Libre Mercado vs ${100 - econPercent}% Intervencion Publica) y tu Eje Social/Territorial en Y: ${finalUserY.toFixed(2)} (${socPercent}% Conservador/Centralista vs ${100 - socPercent}% Progresista/Plurinacional).`;
-            pdf.text(pdf.splitTextToSize(summaryParagraph, 122), 68, 93);
+            pdf.setTextColor(30, 41, 59);
+            const summaryParagraph = `Del analisis ponderado de sus respuestas se desprende una ubicacion en el Eje Economico (X) de ${finalUserX.toFixed(2)} puntos (${econPercent}% Libre Mercado vs. ${100 - econPercent}% Intervencion Publica) y en el Eje Social y Territorial (Y) de ${finalUserY.toFixed(2)} puntos (${socPercent}% Conservador/Centralista vs. ${100 - socPercent}% Progresista/Plurinacional).`;
+            pdf.text(pdf.splitTextToSize(summaryParagraph, 132), 62, 74);
 
             pdf.setFont("helvetica", "bold");
-            pdf.setFontSize(9);
+            pdf.setFontSize(8.8);
             pdf.setTextColor(15, 23, 42);
-            pdf.text(`Partido Ideal a medida: ${partyNameClean} (${idealPartyObject.partyAcronym})`, 68, 114);
-            pdf.setFont("helvetica", "italic");
-            pdf.setFontSize(8);
-            pdf.setTextColor(100, 116, 139);
-            pdf.text(`"${removeEmojisForVectorPDF(idealPartyObject.partySlogan)}"`, 68, 120);
+            pdf.text(`Formacion de maxima convergencia: ${winner1.name} (${winner1.score}%), seguida de ${winner2.name} (${winner2.score}%) y ${expert.winner3.name} (${expert.winner3.score}%).`, 62, 95);
+            pdf.setFont("helvetica", "normal");
+            pdf.setFontSize(8.3);
+            pdf.setTextColor(71, 85, 105);
+            pdf.text(`Modelo de Partido Ideal sintetizado: ${partyNameClean} (${idealPartyObject.partyAcronym}).`, 62, 101.5);
 
-            // Bloque: Las 5 Barras Visuales de tu ADN Político (Estilo 16Personalities)
+            pdf.setDrawColor(226, 232, 240);
+            pdf.line(15, 115, 195, 115);
+
+            // SECCIÓN II: DICTAMEN DE COHERENCIA Y CUADRO TRIBUTARIO
             pdf.setFont("helvetica", "bold");
-            pdf.setFontSize(11.5);
+            pdf.setFontSize(10.5);
             pdf.setTextColor(15, 23, 42);
-            pdf.text("Tu ADN Politico en 5 Espectros Tematicos (0% - 100%)", 14, 136);
+            pdf.text("II. DICTAMEN DE COHERENCIA POLITICO-TRIBUTARIA Y ESTUDIO DE RENTA", 15, 122.5);
 
-            let ySpec = 141;
-            expert.spectrumBars.forEach(bar => {
-                const leftPct = 100 - bar.rightPct;
-                pdf.setFillColor(255, 255, 255);
-                pdf.setDrawColor(226, 232, 240);
-                pdf.roundedRect(14, ySpec, 182, 18, 2.5, 2.5, "FD");
-
-                pdf.setFont("helvetica", "bold");
-                pdf.setFontSize(8.5);
-                pdf.setTextColor(30, 58, 138);
-                pdf.text(`${removeEmojisForVectorPDF(bar.title)}: ${removeEmojisForVectorPDF(bar.summary)}`, 18, ySpec + 6);
-
-                pdf.setFont("helvetica", "normal");
-                pdf.setFontSize(7.2);
-                pdf.setTextColor(100, 116, 139);
-                pdf.text(`${bar.leftPole} (${leftPct}%)`, 18, ySpec + 15.5);
-                pdf.text(`${bar.rightPole} (${bar.rightPct}%)`, 192, ySpec + 15.5, { align: "right" });
-
-                // Barra de progreso vectorial
-                pdf.setFillColor(241, 245, 249);
-                pdf.roundedRect(18, ySpec + 8.2, 174, 4, 1.5, 1.5, "F");
-                const rgb = hexToRgbArray(bar.color);
-                pdf.setFillColor(rgb[0], rgb[1], rgb[2]);
-                const fillW = Math.max(8, (174 * bar.rightPct) / 100);
-                pdf.roundedRect(18, ySpec + 8.2, fillW, 4, 1.5, 1.5, "F");
-
-                ySpec += 21;
-            });
-
-            // Veredicto Voto vs Bolsillo al pie de Página 1
-            pdf.setFillColor(isAligned ? 240 : 255, isAligned ? 253 : 251, isAligned ? 244 : 235);
-            pdf.setDrawColor(isAligned ? 134 : 252, isAligned ? 239 : 211, isAligned ? 172 : 77);
-            pdf.roundedRect(14, 248, 182, 31, 3, 3, "FD");
-
-            pdf.setFont("helvetica", "bold");
-            pdf.setFontSize(9.5);
-            pdf.setTextColor(isAligned ? 22 : 180, isAligned ? 101 : 83, isAligned ? 52 : 9);
-            pdf.text(removeEmojisForVectorPDF(expert.coherenceTitle).replace(/€/g, "EUR"), 18, 255);
+            pdf.setDrawColor(30, 58, 138);
+            pdf.setLineWidth(0.7);
+            pdf.line(15, 126, 15, 145);
 
             pdf.setFont("helvetica", "normal");
-            pdf.setFontSize(8.2);
+            pdf.setFontSize(8.6);
             pdf.setTextColor(30, 41, 59);
             const cleanVerdict = removeEmojisForVectorPDF(expert.coherenceVerdict).replace(/€/g, "EUR");
-            pdf.text(pdf.splitTextToSize(cleanVerdict, 174), 18, 261.5);
+            pdf.text(pdf.splitTextToSize(cleanVerdict, 175), 19, 130);
 
-            // ==================== PÁGINA 2: TARJETAS DE BOLSILLO + TOP 3 PUNTOS CIEGOS + CHULETA ELECTORAL ====================
+            // Tabla sobria de las 6 formaciones
+            let yTable = 152;
+            pdf.setDrawColor(15, 23, 42);
+            pdf.setLineWidth(0.5);
+            pdf.line(15, yTable, 195, yTable);
+            pdf.setFont("helvetica", "bold");
+            pdf.setFontSize(7.8);
+            pdf.setTextColor(51, 65, 85);
+            pdf.text("FORMACION POLITICA", 16, yTable + 5.5);
+            pdf.text("AFINIDAD", 66, yTable + 5.5);
+            pdf.text("NOMINA NETA / IRPF", 88, yTable + 5.5);
+            pdf.text("VIVIENDA", 128, yTable + 5.5);
+            pdf.text("FAMILIA", 154, yTable + 5.5);
+            pdf.text("BALANCE ANUAL NETO", 194, yTable + 5.5, { align: "right" });
+            pdf.line(15, yTable + 8, 195, yTable + 8);
+
+            yTable += 8;
+            expert.fiscalMatrix.slice(0, 6).forEach((row) => {
+                const isWin = row.party === winner1.name;
+                const isBest = row.party === expert.bestFiscalParty.party;
+                if (isWin) {
+                    pdf.setFillColor(248, 250, 252);
+                    pdf.rect(15, yTable, 180, 10.5, "F");
+                }
+                pdf.setDrawColor(226, 232, 240);
+                pdf.setLineWidth(0.25);
+                pdf.line(15, yTable + 10.5, 195, yTable + 10.5);
+
+                let note = "";
+                if (isWin && isBest) note = " (1a Opcion + Optimo)";
+                else if (isWin) note = " (1a Opcion)";
+                else if (isBest) note = " (Optimo Fiscal)";
+
+                pdf.setFont("helvetica", isWin ? "bold" : "normal");
+                pdf.setFontSize(8.3);
+                pdf.setTextColor(15, 23, 42);
+                pdf.text(`${row.party}${note}`, 16, yTable + 6.8);
+                pdf.text(`${row.affinityScore}%`, 68, yTable + 6.8);
+
+                const sSign = row.salaryDiffMonthly >= 0 ? "+" : "";
+                pdf.text(`${row.finalNetMonthly} EUR (${sSign}${row.salaryDiffMonthly})`, 88, yTable + 6.8);
+
+                const hSign = row.housingSavingsMonthly >= 0 ? "+" : "";
+                pdf.text(`${hSign}${row.housingSavingsMonthly} EUR/mes`, 128, yTable + 6.8);
+
+                const fSign = row.familyDiffMonthly >= 0 ? "+" : "";
+                pdf.text(`${fSign}${row.familyDiffMonthly} EUR/mes`, 154, yTable + 6.8);
+
+                const tSign = row.totalDiffAnnual >= 0 ? "+" : "";
+                pdf.setFont("helvetica", "bold");
+                if (row.totalDiffAnnual >= 0) pdf.setTextColor(21, 128, 61);
+                else pdf.setTextColor(185, 28, 28);
+                pdf.text(`${tSign}${row.totalDiffAnnual} EUR/ano`, 194, yTable + 6.8, { align: "right" });
+
+                yTable += 10.5;
+            });
+
+            // SECCIÓN III (En Página 1): SÍNTESIS POR EJES TEMÁTICOS
+            let yAxes = yTable + 10;
+            pdf.setFont("helvetica", "bold");
+            pdf.setFontSize(10.5);
+            pdf.setTextColor(15, 23, 42);
+            pdf.text("III. DESGLOSE DE INCLINACION POR EJES PROGRAMATICOS (5 DIMENSIONES)", 15, yAxes);
+            yAxes += 6;
+
+            expert.spectrumBars.forEach(bar => {
+                pdf.setFont("helvetica", "bold");
+                pdf.setFontSize(8.2);
+                pdf.setTextColor(15, 23, 42);
+                pdf.text(`${removeEmojisForVectorPDF(bar.title)}:`, 16, yAxes);
+                pdf.setFont("helvetica", "normal");
+                pdf.setTextColor(51, 65, 85);
+                pdf.text(removeEmojisForVectorPDF(bar.summary), 62, yAxes);
+
+                pdf.setFillColor(226, 232, 240);
+                pdf.rect(145, yAxes - 2.5, 49, 2.5, "F");
+                pdf.setFillColor(30, 58, 138);
+                pdf.rect(145, yAxes - 2.5, (49 * bar.rightPct) / 100, 2.5, "F");
+
+                yAxes += 7.5;
+            });
+
+            // ==================== PÁGINA 2: AUDITORÍA DE DISCREPANCIAS + ESTRUCTURA DE PARTIDO IDEAL ====================
             pdf.addPage();
             drawVectorHeaderFooterAndWatermarks(pdf, 2, totalPages, partyNameClean);
 
             pdf.setFont("helvetica", "bold");
-            pdf.setFontSize(11.5);
-            pdf.setTextColor(30, 58, 138);
-            pdf.text(`Comparativa Visual de Bolsillo por Partido (${pocketRealSalary.toLocaleString('es-ES')} EUR/ano | ${pocketRealHousing.toUpperCase()} | ${pocketRealKids} Hijos)`, 14, 20);
+            pdf.setFontSize(10.5);
+            pdf.setTextColor(15, 23, 42);
+            pdf.text(`IV. AUDITORIA DE DISCREPANCIAS PROGRAMATICAS CON SU 1A OPCION (${winner1.name})`, 15, 22);
 
-            // Tarjetas en 2 columnas para los 6 partidos
-            let yCard = 24;
-            expert.fiscalMatrix.slice(0, 6).forEach((row, idx) => {
-                const col = idx % 2;
-                const xCard = col === 0 ? 14 : 107;
-                if (idx > 0 && col === 0) yCard += 25;
+            pdf.setFont("helvetica", "normal");
+            pdf.setFontSize(8.5);
+            pdf.setTextColor(71, 85, 105);
+            pdf.text(`Puntos criticos donde la postura declarada por el votante diverge del programa marco de ${winner1.name}:`, 15, 28);
 
-                const isWin = row.party === winner1.name;
-                const isBest = row.party === expert.bestFiscalParty.party;
-                pdf.setFillColor(isBest ? 240 : (isWin ? 239 : 248), isBest ? 253 : (isWin ? 246 : 250), isBest ? 244 : (isWin ? 255 : 252));
-                pdf.setDrawColor(isBest ? 34 : (isWin ? 59 : 203), isBest ? 197 : (isWin ? 130 : 213), isBest ? 94 : (isWin ? 246 : 225));
-                pdf.roundedRect(xCard, yCard, 89, 22, 2.5, 2.5, "FD");
-
-                pdf.setFont("helvetica", "bold");
-                pdf.setFontSize(10);
-                pdf.setTextColor(15, 23, 42);
-                const badgeTxt = isBest ? " [MEJOR BOLSILLO]" : (isWin ? " [TU VOTO]" : "");
-                pdf.text(`${row.party} (${row.affinityScore}%)${badgeTxt}`, xCard + 4, yCard + 6.5);
-
-                const tSign = row.totalDiffAnnual >= 0 ? "+" : "";
-                if (row.totalDiffAnnual >= 0) pdf.setTextColor(21, 128, 61);
-                else pdf.setTextColor(220, 38, 38);
-                pdf.text(`${tSign}${row.totalDiffAnnual} EUR/ano`, xCard + 85, yCard + 6.5, { align: "right" });
-
-                pdf.setFont("helvetica", "normal");
-                pdf.setFontSize(7.5);
-                pdf.setTextColor(71, 85, 105);
-                const sSign = row.salaryDiffMonthly >= 0 ? "+" : "";
-                const hSign = row.housingSavingsMonthly >= 0 ? "+" : "";
-                const fSign = row.familyDiffMonthly >= 0 ? "+" : "";
-                pdf.text(`Nomina: ${sSign}${row.salaryDiffMonthly} EUR/mes  |  Vivienda: ${hSign}${row.housingSavingsMonthly} EUR/mes  |  Hijos: ${fSign}${row.familyDiffMonthly} EUR`, xCard + 4, yCard + 13.5);
-                pdf.text(`Liquido estimado: ${row.finalNetMonthly} EUR/mes (${row.housingLabel})`, xCard + 4, yCard + 19);
-            });
-
-            // Bloque: Top 3 Puntos Ciegos («Letra Pequeña»)
-            let yFric = yCard + 30;
-            pdf.setFont("helvetica", "bold");
-            pdf.setFontSize(11.5);
-            pdf.setTextColor(185, 28, 28);
-            pdf.text(`La "Letra Pequena" de tu Voto: Tus 3 Puntos Ciegos frente a ${winner1.name}`, 14, yFric);
-            yFric += 4;
-
+            let yFric = 34;
             if (expert.frictions.length === 0) {
-                pdf.setFillColor(240, 253, 244);
-                pdf.setDrawColor(187, 247, 208);
-                pdf.roundedRect(14, yFric, 182, 16, 2.5, 2.5, "FD");
+                pdf.setDrawColor(30, 58, 138);
+                pdf.setLineWidth(0.6);
+                pdf.line(15, yFric, 15, yFric + 10);
                 pdf.setFont("helvetica", "normal");
                 pdf.setFontSize(8.8);
-                pdf.setTextColor(22, 101, 52);
-                pdf.text(`Sin contradicciones severas: tus respuestas principales coinciden con el programa marco de ${winner1.name}.`, 18, yFric + 9.5);
-                yFric += 22;
+                pdf.setTextColor(30, 41, 59);
+                pdf.text(`No se registran discrepancias programaticas severas con el programa electoral de ${winner1.name}.`, 19, yFric + 6);
+                yFric += 18;
             } else {
-                expert.frictions.forEach(f => {
-                    pdf.setFillColor(254, 242, 242);
-                    pdf.setDrawColor(254, 202, 202);
-                    pdf.roundedRect(14, yFric, 182, 17, 2.5, 2.5, "FD");
+                expert.frictions.forEach((f, idx) => {
+                    pdf.setDrawColor(30, 58, 138);
+                    pdf.setLineWidth(0.6);
+                    pdf.line(15, yFric, 15, yFric + 16);
+
                     pdf.setFont("helvetica", "bold");
-                    pdf.setFontSize(8.3);
-                    pdf.setTextColor(153, 27, 27);
-                    pdf.text(`• ${removeEmojisForVectorPDF(f.category)}  [Tu postura: ${formatShortStance(f.userVal)}  vs.  ${winner1.name}: ${formatShortStance(f.partyVal)}]`, 18, yFric + 6);
-                    pdf.setFont("helvetica", "normal");
+                    pdf.setFontSize(8.8);
+                    pdf.setTextColor(15, 23, 42);
+                    pdf.text(`Clausula 4.${idx + 1} — ${removeEmojisForVectorPDF(f.category)}${f.isPriority ? ' (Prioridad x2)' : ''}`, 19, yFric + 5);
+
+                    pdf.setFont("helvetica", "bold");
                     pdf.setFontSize(8);
-                    pdf.setTextColor(30, 41, 59);
+                    pdf.setTextColor(71, 85, 105);
+                    pdf.text(`Su postura: ${formatShortStance(f.userVal)}   |   Programa ${winner1.name}: ${formatShortStance(f.partyVal)}`, 195, yFric + 5, { align: "right" });
+
+                    pdf.setFont("helvetica", "normal");
+                    pdf.setFontSize(8.3);
+                    pdf.setTextColor(51, 65, 85);
                     const splitF = pdf.splitTextToSize(removeEmojisForVectorPDF(f.text), 174);
-                    pdf.text(splitF.slice(0, 2), 18, yFric + 11.5);
-                    yFric += 19.5;
+                    pdf.text(splitF.slice(0, 2), 19, yFric + 11);
+
+                    yFric += 21;
                 });
             }
 
-            // Bloque: Consejo de Ministros de tu Partido Ideal (En cuadrícula de 2 columnas limpia)
-            let yIdeal = yFric + 5;
+            pdf.setDrawColor(203, 213, 225);
+            pdf.setLineWidth(0.3);
+            pdf.line(15, yFric + 2, 195, yFric + 2);
+
+            // SECCIÓN V: CONSEJO DE MINISTROS DE SU PARTIDO IDEAL
+            let yIdeal = yFric + 11;
             pdf.setFont("helvetica", "bold");
-            pdf.setFontSize(11.5);
-            pdf.setTextColor(22, 101, 52);
-            pdf.text(`Tu "Chuleta Electoral 29N": Consejo de Ministros de tu Partido Ideal (${idealPartyObject.partyAcronym})`, 14, yIdeal);
-            yIdeal += 4;
+            pdf.setFontSize(10.5);
+            pdf.setTextColor(15, 23, 42);
+            pdf.text(`V. SINTESIS POR AREAS DE GOBIERNO — PARTIDO IDEAL (${partyNameClean.toUpperCase()})`, 15, yIdeal);
+            yIdeal += 5;
 
-            idealPartyObject.pillars.forEach((p, idx) => {
-                const col = idx % 2;
-                const xP = col === 0 ? 14 : 107;
-                if (idx > 0 && col === 0) yIdeal += 30;
+            pdf.setFont("helvetica", "italic");
+            pdf.setFontSize(8.5);
+            pdf.setTextColor(71, 85, 105);
+            pdf.text(`Lema sintetizado: "${removeEmojisForVectorPDF(idealPartyObject.partySlogan)}"`, 15, yIdeal);
+            yIdeal += 7;
 
-                pdf.setFillColor(248, 250, 252);
-                pdf.setDrawColor(203, 213, 225);
-                pdf.roundedRect(xP, yIdeal, 89, 27, 2.5, 2.5, "FD");
+            idealPartyObject.pillars.forEach((p) => {
+                pdf.setDrawColor(226, 232, 240);
+                pdf.setLineWidth(0.3);
+                pdf.line(15, yIdeal + 19, 195, yIdeal + 19);
 
                 pdf.setFont("helvetica", "bold");
-                pdf.setFontSize(8.5);
+                pdf.setFontSize(9);
+                pdf.setTextColor(15, 23, 42);
+                pdf.text(removeEmojisForVectorPDF(p.area).toUpperCase(), 15, yIdeal + 5);
+
+                pdf.setFont("helvetica", "bold");
+                pdf.setFontSize(7.8);
                 pdf.setTextColor(30, 58, 138);
-                pdf.text(removeEmojisForVectorPDF(p.area).toUpperCase(), xP + 4, yIdeal + 6);
+                pdf.text(removeEmojisForVectorPDF(p.ref), 195, yIdeal + 5, { align: "right" });
 
                 pdf.setFont("helvetica", "normal");
-                pdf.setFontSize(7.5);
+                pdf.setFontSize(8.3);
                 pdf.setTextColor(51, 65, 85);
-                const splitSt = pdf.splitTextToSize(removeEmojisForVectorPDF(p.stance), 81);
-                pdf.text(splitSt.slice(0, 2), xP + 4, yIdeal + 11.5);
+                const splitSt = pdf.splitTextToSize(removeEmojisForVectorPDF(p.stance), 178);
+                pdf.text(splitSt.slice(0, 2), 15, yIdeal + 11);
 
-                pdf.setFont("helvetica", "bold");
-                pdf.setFontSize(7.3);
-                pdf.setTextColor(21, 128, 61);
-                pdf.text(removeEmojisForVectorPDF(p.ref), xP + 4, yIdeal + 23.5);
+                yIdeal += 21.5;
             });
 
-            const safeFileName = `Dossier_Experto_29N_${winner1.name}.pdf`;
+            const safeFileName = `Informe_Oficial_29N_${winner1.name}.pdf`;
             pdf.save(safeFileName);
 
             if (btn) {
-                btn.innerText = "✅ ¡Dossier Visual PDF Descargado!";
+                btn.innerText = "✅ ¡Informe Oficial PDF Descargado!";
                 setTimeout(() => {
                     btn.innerText = originalText;
                     btn.disabled = false;
