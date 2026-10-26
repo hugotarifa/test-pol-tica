@@ -337,7 +337,7 @@
             overflow: hidden;
             background:
                 /* oscurecido central para que el bloque de texto respire */
-                radial-gradient(ellipse 42% 55% at 50% 50%, rgba(3, 7, 18, 0.55) 0%, rgba(3, 7, 18, 0) 70%),
+                radial-gradient(ellipse 42% 52% at 50% 38%, rgba(3, 7, 18, 0.55) 0%, rgba(3, 7, 18, 0) 70%),
                 /* focos de luz detrás de los líderes principales */
                 radial-gradient(circle at 24% 58%, rgba(248, 113, 113, 0.55) 0%, rgba(248, 113, 113, 0) 36%),
                 radial-gradient(circle at 76% 58%, rgba(96, 165, 250, 0.55) 0%, rgba(96, 165, 250, 0) 36%),
@@ -483,7 +483,7 @@
 
         .vs-center-box {
             position: absolute;
-            top: 50%;
+            top: 38%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 20;
@@ -582,7 +582,7 @@
             .vs-side { height: 50%; width: 100%; }
             .vs-left {
                 justify-content: flex-start;
-                padding-top: 2.2rem;
+                padding-top: 2rem;
             }
             .vs-right {
                 justify-content: flex-end;
@@ -595,28 +595,27 @@
             .leaders-stage { width: 100%; }
             .size-main { margin: 0 -9cqw; }
 
-            .size-main  .leader-cutout { height: min(25vh, 50vw); }
-            .size-ally  .leader-cutout { height: min(21vh, 40vw); }
-            .size-small .leader-cutout { height: min(18vh, 33vw); }
+            .size-main  .leader-cutout { height: min(25vh, 50vw); height: min(25dvh, 48vw); }
+            .size-ally  .leader-cutout { height: min(21vh, 40vw); height: min(21dvh, 38vw); }
+            .size-small .leader-cutout { height: min(18vh, 33vw); height: min(18dvh, 32vw); }
 
             .leader-badge { font-size: 0.52rem; padding: 0.12rem 0.42rem; bottom: 6%; }
             .size-main .leader-badge { bottom: 18%; }
             .block-label { white-space: nowrap; }
-            .vs-right { padding-bottom: 2.5rem; }
 
             .vs-center-box {
-                top: 49%;
-                padding: 0.95rem 0.85rem;
-                width: 92%;
+                top: 50%;
+                padding: 0.75rem 0.85rem 0.8rem;
+                width: 88%;
                 min-width: 0;
-                max-width: 355px;
-                border-radius: 18px;
+                max-width: 330px;
+                border-radius: 16px;
             }
-            .vs-seal { width: 38px; height: 38px; font-size: 0.9rem; margin-top: -27px; margin-bottom: 0.35rem; border-width: 2px; }
-            .vs-center-box h1 { font-size: 1.05rem; margin-bottom: 0.25rem; line-height: 1.22; }
-            .vs-center-box p { font-size: 0.73rem; margin-bottom: 0.65rem; line-height: 1.32; }
-            .landing-buttons { gap: 0.4rem; }
-            .btn-landing { width: 100%; padding: 0.62rem 0.75rem; font-size: 0.82rem; min-width: unset; border-radius: 10px; }
+            .vs-seal { width: 34px; height: 34px; font-size: 0.82rem; margin-top: -24px; margin-bottom: 0.25rem; border-width: 2px; }
+            .vs-center-box h1 { font-size: 0.96rem; margin-bottom: 0.55rem; line-height: 1.2; }
+            .vs-center-box p { display: none; }
+            .landing-buttons { gap: 0.36rem; }
+            .btn-landing { width: 100%; padding: 0.52rem 0.7rem; font-size: 0.79rem; min-width: unset; border-radius: 10px; }
         }
 
         /* =========================================================================
