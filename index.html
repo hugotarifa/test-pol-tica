@@ -325,6 +325,7 @@
         /* =========================================================================
            VISTA 0: PORTADA PANTALLA COMPLETA CON LOS 6 LÍDERES PRINCIPALES
            ========================================================================= */
+        /* FONDO ÚNICO: DEGRADADO CONTINUO ROJO → PÚRPURA NOCHE → AZUL (SIN CORTE CENTRAL) */
         #view-landing {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -334,7 +335,28 @@
             z-index: 3000;
             display: flex;
             overflow: hidden;
-            background: #030712;
+            background:
+                /* oscurecido central para que el bloque de texto respire */
+                radial-gradient(ellipse 42% 55% at 50% 50%, rgba(3, 7, 18, 0.55) 0%, rgba(3, 7, 18, 0) 70%),
+                /* focos de luz detrás de los líderes principales */
+                radial-gradient(circle at 24% 58%, rgba(248, 113, 113, 0.55) 0%, rgba(248, 113, 113, 0) 36%),
+                radial-gradient(circle at 76% 58%, rgba(96, 165, 250, 0.55) 0%, rgba(96, 165, 250, 0) 36%),
+                /* suelo oscuro donde se funden los cuerpos */
+                linear-gradient(to top, rgba(3, 7, 18, 0.9) 0%, rgba(3, 7, 18, 0) 38%),
+                /* degradado principal izquierda (rojo) → derecha (azul) */
+                linear-gradient(90deg, #3f0a0a 0%, #991b1b 18%, #b91c1c 28%, #6d1a4a 42%, #2e1b5e 50%, #1e3a8a 58%, #1d4ed8 72%, #1e40af 82%, #0a1640 100%);
+        }
+
+        /* Grano cinematográfico sutil por encima del fondo */
+        #view-landing::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.05;
+            /* sin mix-blend-mode: en Chromium creaba un halo rectangular alrededor de las siluetas con drop-shadow */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
         }
 
         .vs-side {
@@ -345,17 +367,7 @@
             justify-content: flex-end;
             align-items: center;
             overflow: hidden;
-            padding-bottom: 1.5rem;
-        }
-
-        .vs-left {
-            background: radial-gradient(circle at 25% 25%, #ef4444 0%, #991b1b 60%, #3b0707 100%);
-            border-right: 2px solid rgba(255, 255, 255, 0.25);
-        }
-
-        .vs-right {
-            background: radial-gradient(circle at 75% 25%, #3b82f6 0%, #1e3a8a 60%, #07112e 100%);
-            border-left: 2px solid rgba(255, 255, 255, 0.25);
+            z-index: 2;
         }
 
         .block-label {
@@ -366,64 +378,108 @@
             letter-spacing: 1.5px;
             text-transform: uppercase;
             color: #ffffff;
-            background: rgba(0, 0, 0, 0.55);
+            background: rgba(0, 0, 0, 0.35);
             padding: 0.35rem 1rem;
             border-radius: 99px;
-            border: 1px solid rgba(255,255,255,0.22);
+            border: 1px solid rgba(255,255,255,0.18);
             backdrop-filter: blur(8px);
             z-index: 5;
         }
+
+        /* ESCENARIO DE LÍDERES: SILUETAS RECORTADAS, SOLAPADAS COMO UNA FOTO DE GRUPO
+           (el principal delante en el centro, los aliados detrás a cada lado).
+           El escenario ocupa solo el hueco libre que deja el bloque central. */
+        #view-landing { --box-w: clamp(360px, 34vw, 470px); }
+
+        .vs-left  { align-items: flex-start; }
+        .vs-right { align-items: flex-end; }
+
+        .vs-left .block-label  { left: calc((50vw - var(--box-w) / 2) / 2); transform: translateX(-50%); }
+        .vs-right .block-label { right: calc((50vw - var(--box-w) / 2) / 2); transform: translateX(50%); }
 
         .leaders-stage {
             display: flex;
             align-items: flex-end;
             justify-content: center;
-            gap: 0.85rem;
-            width: 100%;
-            padding: 0 0.5rem;
+            width: calc(50vw - var(--box-w) / 2 - 1vw);
+            container-type: inline-size;
             z-index: 4;
         }
 
         .leader-card {
+            position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
-            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            animation: leaderRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
         }
 
-        .leader-photo-wrap {
-            border-radius: 18px;
-            overflow: hidden;
-            border: 3px solid rgba(255, 255, 255, 0.9);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.65);
-            background: #1e293b;
-            position: relative;
-        }
+        .size-main  { z-index: 3; order: 2; margin: 0 -12cqw; animation-delay: 0.05s; }
+        .size-ally  { z-index: 2; animation-delay: 0.2s; }
+        .size-small { z-index: 1; animation-delay: 0.35s; }
+        /* izquierda: Podemos fuera · PSOE centro · Sumar hacia dentro */
+        .vs-left .size-small { order: 1; }
+        .vs-left .size-ally  { order: 3; }
+        /* derecha: Vox hacia dentro · PP centro · SALF fuera */
+        .vs-right .size-ally  { order: 1; }
+        .vs-right .size-small { order: 3; }
 
-        .leader-photo-wrap img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top center;
+        .leader-cutout {
             display: block;
+            width: auto;
+            max-width: none;
+            user-select: none;
+            pointer-events: none;
         }
 
-        .size-main .leader-photo-wrap { width: 145px; height: 185px; border-width: 4px; }
-        .size-ally .leader-photo-wrap { width: 115px; height: 150px; opacity: 0.95; }
-        .size-small .leader-photo-wrap { width: 95px; height: 125px; opacity: 0.9; }
+        .size-main  .leader-cutout { height: min(64vh, 74cqw); }
+        .size-ally  .leader-cutout { height: min(50vh, 56cqw); }
+        .size-small .leader-cutout { height: min(46vh, 50cqw); }
+
+        /* Luz de contorno del color de cada bloque + sombra de profundidad */
+        .vs-left .leader-cutout {
+            filter: drop-shadow(-4px -2px 14px rgba(248, 113, 113, 0.45)) drop-shadow(0 22px 30px rgba(0, 0, 0, 0.55));
+        }
+        .vs-right .leader-cutout {
+            filter: drop-shadow(4px -2px 14px rgba(96, 165, 250, 0.45)) drop-shadow(0 22px 30px rgba(0, 0, 0, 0.55));
+        }
+        /* Los secundarios, un punto más atrás (profundidad) */
+        .vs-left .size-ally .leader-cutout,
+        .vs-left .size-small .leader-cutout {
+            filter: brightness(0.86) drop-shadow(-4px -2px 12px rgba(248, 113, 113, 0.35)) drop-shadow(0 18px 26px rgba(0, 0, 0, 0.5));
+        }
+        .vs-right .size-ally .leader-cutout,
+        .vs-right .size-small .leader-cutout {
+            filter: brightness(0.86) drop-shadow(4px -2px 12px rgba(96, 165, 250, 0.35)) drop-shadow(0 18px 26px rgba(0, 0, 0, 0.5));
+        }
+
+        @keyframes leaderRise {
+            from { opacity: 0; transform: translateY(40px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .leader-card { animation: none; }
+        }
 
         .leader-badge {
-            margin-top: -10px;
+            position: absolute;
+            bottom: 9%;
+            left: 50%;
+            transform: translateX(-50%);
             z-index: 6;
-            background: #0f172a;
             color: #ffffff;
-            font-size: 0.68rem;
+            font-size: 0.7rem;
             font-weight: 800;
-            padding: 0.25rem 0.55rem;
-            border-radius: 6px;
-            border: 1px solid rgba(255,255,255,0.3);
+            letter-spacing: 0.3px;
+            padding: 0.28rem 0.7rem;
+            border-radius: 99px;
+            border: 1px solid rgba(255,255,255,0.35);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
             white-space: nowrap;
         }
+        /* la etiqueta del principal va más arriba para no pisar a sus aliados */
+        .size-main .leader-badge { bottom: 17%; }
 
         .vs-center-box {
             position: absolute;
@@ -431,15 +487,15 @@
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 20;
-            width: 90%;
-            max-width: 700px;
+            width: var(--box-w);
             text-align: center;
-            background: rgba(9, 13, 22, 0.88);
-            border: 1px solid rgba(255, 255, 255, 0.22);
-            backdrop-filter: blur(16px);
+            background: linear-gradient(180deg, rgba(9, 13, 22, 0.78), rgba(9, 13, 22, 0.88));
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
             padding: 1.75rem 1.5rem;
-            border-radius: 22px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.85);
+            border-radius: 24px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.08);
         }
 
         .vs-seal {
@@ -466,7 +522,7 @@
 
         .vs-center-box h1 {
             color: #ffffff;
-            font-size: 1.85rem;
+            font-size: clamp(1.35rem, 1.9vw, 1.85rem);
             font-weight: 900;
             line-height: 1.2;
             margin-bottom: 0.5rem;
@@ -481,9 +537,11 @@
 
         .landing-buttons {
             display: flex;
-            gap: 0.85rem;
+            flex-direction: column;
+            gap: 0.65rem;
             justify-content: center;
-            flex-wrap: wrap;
+            max-width: 380px;
+            margin: 0 auto;
         }
 
         .btn-landing {
@@ -498,7 +556,7 @@
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
-            min-width: 230px;
+            width: 100%;
         }
 
         .btn-landing-programs {
@@ -512,35 +570,45 @@
         }
 
         @media (max-width: 820px) {
-            #view-landing { flex-direction: column; }
+            /* En móvil el degradado pasa a vertical: rojo arriba → azul abajo */
+            #view-landing {
+                flex-direction: column;
+                background:
+                    radial-gradient(ellipse 80% 30% at 50% 50%, rgba(3, 7, 18, 0.6) 0%, rgba(3, 7, 18, 0) 75%),
+                    radial-gradient(circle at 50% 18%, rgba(248, 113, 113, 0.5) 0%, rgba(248, 113, 113, 0) 45%),
+                    radial-gradient(circle at 50% 84%, rgba(96, 165, 250, 0.5) 0%, rgba(96, 165, 250, 0) 45%),
+                    linear-gradient(180deg, #3f0a0a 0%, #991b1b 16%, #b91c1c 26%, #6d1a4a 42%, #2e1b5e 50%, #1e3a8a 58%, #1d4ed8 74%, #1e40af 86%, #0a1640 100%);
+            }
             .vs-side { height: 50%; width: 100%; }
             .vs-left {
-                border-right: none;
-                border-bottom: 2px solid rgba(255,255,255,0.25);
                 justify-content: flex-start;
-                padding-top: 2.75rem;
+                padding-top: 2.2rem;
             }
             .vs-right {
-                border-left: none;
                 justify-content: flex-end;
-                padding-bottom: 2.3rem;
+                padding-bottom: 2.1rem;
             }
-            .vs-left .block-label { top: 8px; font-size: 0.58rem; padding: 0.2rem 0.7rem; }
-            .vs-right .block-label { top: auto; bottom: 7px; font-size: 0.58rem; padding: 0.2rem 0.7rem; }
+            .vs-left, .vs-right { align-items: center; }
+            .vs-left .block-label { top: 8px; left: 50%; transform: translateX(-50%); font-size: 0.58rem; padding: 0.2rem 0.7rem; }
+            .vs-right .block-label { top: auto; bottom: 7px; right: auto; left: 50%; transform: translateX(-50%); font-size: 0.58rem; padding: 0.2rem 0.7rem; }
 
-            .vs-left .size-main .leader-photo-wrap,
-            .vs-right .size-main .leader-photo-wrap { width: 78px; height: 96px; border-width: 2.5px; }
-            .vs-left .size-ally .leader-photo-wrap,
-            .vs-right .size-ally .leader-photo-wrap { width: 66px; height: 84px; border-width: 2px; }
-            .vs-left .size-small .leader-photo-wrap,
-            .vs-right .size-small .leader-photo-wrap { width: 58px; height: 74px; border-width: 2px; }
+            .leaders-stage { width: 100%; }
+            .size-main { margin: 0 -9cqw; }
 
-            .leader-badge { font-size: 0.52rem; padding: 0.12rem 0.38rem; margin-top: -8px; }
+            .size-main  .leader-cutout { height: min(25vh, 50vw); }
+            .size-ally  .leader-cutout { height: min(21vh, 40vw); }
+            .size-small .leader-cutout { height: min(18vh, 33vw); }
+
+            .leader-badge { font-size: 0.52rem; padding: 0.12rem 0.42rem; bottom: 6%; }
+            .size-main .leader-badge { bottom: 18%; }
+            .block-label { white-space: nowrap; }
+            .vs-right { padding-bottom: 2.5rem; }
 
             .vs-center-box {
                 top: 49%;
                 padding: 0.95rem 0.85rem;
                 width: 92%;
+                min-width: 0;
                 max-width: 355px;
                 border-radius: 18px;
             }
@@ -3013,21 +3081,15 @@
             <span class="block-label">◄ Bloque Izquierda y Aliados</span>
             <div class="leaders-stage">
                 <div class="leader-card size-small">
-                    <div class="leader-photo-wrap">
-                        <img src="irene.jpg" alt="Irene Montero Podemos Elecciones 29N" onerror="this.src='https://ui-avatars.com/api/?name=Irene+Montero&background=9333ea&color=fff&size=256'">
-                    </div>
+                    <img class="leader-cutout" src="irene-cutout.webp" alt="Irene Montero Podemos Elecciones 29N" onerror="this.onerror=null;this.src='irene.jpg'">
                     <span class="leader-badge" style="background:#9333ea;">PODEMOS</span>
                 </div>
                 <div class="leader-card size-ally">
-                    <div class="leader-photo-wrap">
-                        <img src="yolanda.jpg" alt="Yolanda Díaz Sumar Elecciones 29N" onerror="this.src='https://ui-avatars.com/api/?name=Yolanda+Diaz&background=db2777&color=fff&size=256'">
-                    </div>
+                    <img class="leader-cutout" src="yolanda-cutout.webp" alt="Yolanda Díaz Sumar Elecciones 29N" onerror="this.onerror=null;this.src='yolanda.jpg'">
                     <span class="leader-badge" style="background:#db2777;">Yolanda Díaz (SUMAR)</span>
                 </div>
                 <div class="leader-card size-main">
-                    <div class="leader-photo-wrap">
-                        <img src="sanchez.jpg" alt="Pedro Sánchez PSOE Elecciones 29N" onerror="this.src='https://ui-avatars.com/api/?name=Pedro+Sanchez&background=dc2626&color=fff&size=256'">
-                    </div>
+                    <img class="leader-cutout" src="sanchez-cutout.webp" alt="Pedro Sánchez PSOE Elecciones 29N" onerror="this.onerror=null;this.src='sanchez.jpg'">
                     <span class="leader-badge" style="background:#dc2626;">Pedro Sánchez (PSOE)</span>
                 </div>
             </div>
@@ -3037,21 +3099,15 @@
             <span class="block-label">Bloque Derecha y Nuevas Fuerzas ►</span>
             <div class="leaders-stage">
                 <div class="leader-card size-main">
-                    <div class="leader-photo-wrap">
-                        <img src="feijo.jpg" alt="Alberto Núñez Feijóo PP Elecciones 29N" onerror="this.src='https://ui-avatars.com/api/?name=Alberto+Feijoo&background=2563eb&color=fff&size=256'">
-                    </div>
+                    <img class="leader-cutout" src="feijo-cutout.webp" alt="Alberto Núñez Feijóo PP Elecciones 29N" onerror="this.onerror=null;this.src='feijo.jpg'">
                     <span class="leader-badge" style="background:#2563eb;">A. Núñez Feijóo (PP)</span>
                 </div>
                 <div class="leader-card size-ally">
-                    <div class="leader-photo-wrap">
-                        <img src="abascal.jpg" alt="Santiago Abascal VOX Elecciones 29N" onerror="this.src='https://ui-avatars.com/api/?name=Santiago+Abascal&background=16a34a&color=fff&size=256'">
-                    </div>
+                    <img class="leader-cutout" src="abascal-cutout.webp" alt="Santiago Abascal VOX Elecciones 29N" onerror="this.onerror=null;this.src='abascal.jpg'">
                     <span class="leader-badge" style="background:#16a34a;">S. Abascal (VOX)</span>
                 </div>
                 <div class="leader-card size-small">
-                    <div class="leader-photo-wrap">
-                        <img src="alvise.jpg" alt="Alvise Pérez Se Acabó La Fiesta SALF 29N" onerror="this.src='https://ui-avatars.com/api/?name=Alvise+Perez&background=78350f&color=fff&size=256'">
-                    </div>
+                    <img class="leader-cutout" src="alvise-cutout.webp" alt="Alvise Pérez Se Acabó La Fiesta SALF 29N" onerror="this.onerror=null;this.src='alvise.jpg'">
                     <span class="leader-badge" style="background:#78350f;">Alvise (SALF)</span>
                 </div>
             </div>
