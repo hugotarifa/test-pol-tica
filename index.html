@@ -17,8 +17,9 @@
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="shortcut icon" href="favicon.ico">
 
-    <!-- VERIFICACIÓN OFICIAL DE GOOGLE SEARCH CONSOLE -->
+    <!-- VERIFICACIÓN OFICIAL DE GOOGLE SEARCH CONSOLE Y GOOGLE ADSENSE -->
     <meta name="google-site-verification" content="googlea27f16e4842865fa">
+    <meta name="google-adsense-account" content="ca-pub-9189841589077775">
 
     <meta name="description" content="Haz gratis el Test Oficial de las Elecciones del 29 de Noviembre (29N) en España. Descubre tu afinidad política (PSOE, PP, VOX, SUMAR, PODEMOS, SALF, PACMA y autonómicos), simula cómo afectará a tu nómina e impuestos y consulta los programas electorales.">
     <meta name="keywords" content="elecciones 29 noviembre test, test elecciones 29n, a que partido votar 29n, que partido votar test, test afinidad politica españa, programas electorales 29 noviembre, simulador fiscal elecciones 29n, se acabo la fiesta alvise test, pactometro 29n, brujula politica españa 2026, elecciones29ntest">
@@ -150,16 +151,6 @@
                 'functionality_storage': 'granted',
                 'security_storage': 'granted'
             });
-        } else {
-            // Por defecto en la UE: Denegado hasta consentimiento expreso del usuario
-            gtag('consent', 'default', {
-                'ad_storage': 'denied',
-                'ad_user_data': 'denied',
-                'ad_personalization': 'denied',
-                'analytics_storage': 'denied',
-                'functionality_storage': 'granted',
-                'security_storage': 'granted'
-            });
         }
     </script>
 
@@ -221,10 +212,8 @@
             position: relative;
         }
 
-        body.landing-lock {
-            overflow: hidden;
-            height: 100vh;
-            height: 100dvh;
+        body.landing-lock .mobile-bottom-nav {
+            display: none !important;
         }
 
         /* =========================================================================
@@ -327,12 +316,11 @@
            ========================================================================= */
         /* FONDO ÚNICO: DEGRADADO CONTINUO ROJO → PÚRPURA NOCHE → AZUL (SIN CORTE CENTRAL) */
         #view-landing {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            width: 100vw;
+            position: relative;
+            width: 100%;
             height: 100vh;
             height: 100dvh;
-            z-index: 3000;
+            z-index: 10;
             display: flex;
             overflow: hidden;
             background:
@@ -619,9 +607,9 @@
         }
 
         /* =========================================================================
-           ESTRUCTURA INTERNA Y LATERALES PUBLICITARIOS GIGANTES EN PC (300x600)
+           ESTRUCTURA INTERNA Y LATERALES PUBLICITARIOS EN PC
            ========================================================================= */
-        #app-shell { display: none; }
+        #app-shell { display: block; }
 
         header {
             background: var(--card);
@@ -756,30 +744,24 @@
         }
 
         .ad-slot-vertical {
-            background: var(--card);
-            border: 2px dashed var(--border);
-            border-radius: 16px;
             width: 300px;
-            min-height: 600px;
+            min-height: 0;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: var(--muted);
-            font-size: 0.82rem;
-            padding: 1.25rem;
-            box-shadow: var(--shadow);
         }
 
-        .ad-wrapper { margin: 0 0 1.15rem 0; text-align: center; }
-        .ad-label { font-size: 0.65rem; text-transform: uppercase; color: var(--muted); letter-spacing: 1px; margin-bottom: 0.3rem; display: block; font-weight: 700; }
-        .ad-slot { background: var(--card); border: 2px dashed var(--border); border-radius: 14px; min-height: 90px; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.85rem; padding: 0.85rem; box-shadow: var(--shadow); }
+        .ad-wrapper { margin: 0 0 0.75rem 0; text-align: center; min-height: 0; }
+        .ad-label { font-size: 0.65rem; text-transform: uppercase; color: var(--muted); letter-spacing: 1px; margin-bottom: 0.3rem; display: none; font-weight: 700; }
+        .ad-slot { min-height: 0; display: flex; align-items: center; justify-content: center; }
+        ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
         /* =========================================================================
            VISTA 1: PROGRAMAS + MODO "VOTO A CIEGAS" (SIN PREJUICIOS)
            ========================================================================= */
-        #view-programs { display: none; }
+        #view-programs { display: block; margin-bottom: 1.5rem; }
         .programs-header-box { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 1.5rem; margin-bottom: 1.25rem; box-shadow: var(--shadow); }
         
         .blind-mode-banner {
@@ -3176,22 +3158,26 @@
 
         <div class="page-layout">
 
-            <!-- COLUMNA PUBLICITARIA IZQUIERDA GIGANTE (SIEMPRE VISIBLE EN PC) -->
+            <!-- COLUMNA PUBLICITARIA IZQUIERDA (PC) -->
             <aside class="side-ad-column">
-                <span class="ad-label">Publicidad</span>
                 <div class="ad-slot-vertical">
-                    <span style="font-size: 2rem; margin-bottom: 0.5rem;">📢</span>
-                    <strong>Google AdSense PC</strong>
-                    <span style="margin-top:0.4rem;">Rascacielos Grande Izquierdo<br><strong>(300 x 600 px)</strong></span>
+                    <ins class="adsbygoogle"
+                         style="display:block; width:100%;"
+                         data-ad-client="ca-pub-9189841589077775"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
                 </div>
             </aside>
 
             <main style="width: 100%;">
 
                 <div class="ad-wrapper desktop-only-ad">
-                    <span class="ad-label">Publicidad</span>
                     <div class="ad-slot">
-                        [Espacio Google AdSense Leaderboard Horizontal PC - 728x90]
+                        <ins class="adsbygoogle"
+                             style="display:block; width:100%;"
+                             data-ad-client="ca-pub-9189841589077775"
+                             data-ad-format="auto"
+                             data-full-width-responsive="true"></ins>
                     </div>
                 </div>
 
@@ -3231,12 +3217,18 @@
                         </div>
                     </div>
 
-                    <div id="program-squares-container" class="program-party-card"></div>
+                    <div id="program-squares-container" class="program-party-card">
+                        <h3 style="margin-bottom:0.5rem;">🌹 Síntesis Programática: PSOE, PP, VOX, SUMAR, PODEMOS, SALF, PACMA y Autonómicos</h3>
+                        <p style="font-size:0.9rem; color:var(--muted);">Comparativa verificada de las propuestas electorales oficiales en Economía, Impuestos (IRPF, IVA y Sociedades), Vivienda, Sanidad, Educación, Pensiones, Energía, Modelo Territorial, Justicia y Regeneración Democrática para las elecciones generales del 29 de noviembre (29N).</p>
+                    </div>
 
                     <div class="ad-wrapper" style="margin-top: 1.25rem;">
-                        <span class="ad-label">Publicidad</span>
                         <div class="ad-slot">
-                            [Espacio Google AdSense En-Programas - 300x250 / Adaptable]
+                            <ins class="adsbygoogle"
+                                 style="display:block; width:100%;"
+                                 data-ad-client="ca-pub-9189841589077775"
+                                 data-ad-format="auto"
+                                 data-full-width-responsive="true"></ins>
                         </div>
                     </div>
 
@@ -3279,31 +3271,17 @@
                             <button class="btn-primary-large" onclick="initiateQuizWithAd()">
                                 Comenzar el Test (30 Preguntas) →
                             </button>
-
-                            <div style="margin-top: 1.25rem;">
-                                <button class="btn-demo" onclick="startAndSimulate()">
-                                    ⚡ Simular resultado al instante (Modo Prueba)
-                                </button>
-                            </div>
                         </div>
 
-                        <!-- 2. PANTALLA DE ESPERA DE 10 SEGUNDOS CON ANUNCIO -->
+                        <!-- 2. PANTALLA DE TRANSICIÓN DEL TEST -->
                         <div id="loading-ad-screen">
                             <div>
-                                <div class="countdown-ring" id="ad-countdown-number">10s</div>
-                                <h2 id="loading-ad-title" style="font-size: 1.45rem; margin-bottom: 0.35rem;">Generando test...</h2>
+                                <div class="countdown-ring" id="ad-countdown-number">✓</div>
+                                <h2 id="loading-ad-title" style="font-size: 1.45rem; margin-bottom: 0.35rem;">Preparando cuestionario...</h2>
                                 <p id="loading-ad-subtitle" style="color: var(--muted); font-size: 0.9rem; max-width: 440px; margin: 0 auto;">
-                                    Preparando las 30 cuestiones oficiales según tu circunscripción electoral.
+                                    Cargando las 30 cuestiones oficiales según tu circunscripción electoral.
                                 </p>
-                                
-                                <div class="ad-interstitial-box">
-                                    <span class="ad-label">Publicidad • Continúa en <span id="ad-seconds-inline">10</span>s</span>
-                                    <div class="ad-video-placeholder">
-                                        <span style="font-size: 2rem;">📺</span>
-                                        <strong>[Espacio Google AdSense Vídeo / Imagen 336x280]</strong>
-                                        <span>Anuncio patrocinado</span>
-                                    </div>
-                                </div>
+                                <span id="ad-seconds-inline" style="display:none;">0</span>
                             </div>
                         </div>
 
@@ -3313,7 +3291,6 @@
                                 <button class="btn-secondary" onclick="exitFullscreenQuizToHome()" style="padding: 0.3rem 0.65rem; font-size: 0.75rem;">✕ Salir</button>
                                 <span id="question-counter" style="font-weight: 800; font-size: 0.88rem; color: var(--muted);">Pregunta 1 de 30</span>
                                 <span id="question-topic" class="topic-tag">Vivienda</span>
-                                <button class="btn-demo" onclick="simulateRandomResults()">⚡ Fin</button>
                             </div>
 
                             <div class="progress-bar-bg">
@@ -4029,13 +4006,14 @@
 
             </main>
 
-            <!-- COLUMNA PUBLICITARIA DERECHA GIGANTE (SIEMPRE VISIBLE EN PC) -->
+            <!-- COLUMNA PUBLICITARIA DERECHA (PC) -->
             <aside class="side-ad-column">
-                <span class="ad-label">Publicidad</span>
                 <div class="ad-slot-vertical">
-                    <span style="font-size: 2rem; margin-bottom: 0.5rem;">📢</span>
-                    <strong>Google AdSense PC</strong>
-                    <span style="margin-top:0.4rem;">Rascacielos Grande Derecho<br><strong>(300 x 600 px)</strong></span>
+                    <ins class="adsbygoogle"
+                         style="display:block; width:100%;"
+                         data-ad-client="ca-pub-9189841589077775"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
                 </div>
             </aside>
 
@@ -4045,15 +4023,20 @@
             <div class="footer-inner">
                 <div>
                     <strong style="color: white; font-size: 1rem;">🗳️ elecciones29ntest.es • Decide29N</strong>
-                    <p style="margin-top: 0.4rem; max-width: 450px;">Portal independiente de información programática, test de afinidad electoral y orientación al voto para las elecciones generales del 29 de noviembre en España.</p>
+                    <p style="margin-top: 0.4rem; max-width: 480px;">Portal cívico independiente de información programática, test de afinidad electoral y simulador fiscal para las elecciones generales del 29 de noviembre en España. Contacto directo: <a href="mailto:contacto@elecciones29ntest.es" style="color:#93c5fd; text-decoration:underline;">contacto@elecciones29ntest.es</a></p>
                 </div>
                 <div class="footer-links">
-                    <a onclick="openLegalModal('aviso')">Aviso Legal</a>
-                    <a onclick="openLegalModal('privacidad')">Privacidad</a>
-                    <a onclick="openLegalModal('cookies')">Política de Cookies</a>
-                    <a onclick="openCookieSettingsModal()">⚙️ Configurar Cookies</a>
-                    <a onclick="openLegalModal('contacto')">Contacto</a>
+                    <a href="#aviso-legal" onclick="openLegalModal('aviso'); return false;">Aviso Legal</a>
+                    <a href="#politica-privacidad" onclick="openLegalModal('privacidad'); return false;">Política de Privacidad</a>
+                    <a href="#politica-cookies" onclick="openLegalModal('cookies'); return false;">Política de Cookies</a>
+                    <a href="#configurar-cookies" onclick="openCookieSettingsModal(); return false;">⚙️ Configurar Cookies</a>
+                    <a href="mailto:contacto@elecciones29ntest.es" onclick="openLegalModal('contacto'); return false;">Contacto</a>
                 </div>
+            </div>
+            <div style="max-width: 1100px; margin: 1.25rem auto 0; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.12); font-size: 0.78rem; color: #94a3b8; line-height: 1.55;">
+                <p id="aviso-legal" style="margin-bottom: 0.5rem;"><strong style="color:#e2e8f0;">Aviso Legal e Independencia Editorial (LSSI-CE):</strong> Decide29N (elecciones29ntest.es) es una herramienta educativa y de divulgación ciudadana sin vinculación orgánica ni financiación de ningún partido político. Los nombres, siglas y extractos programáticos se emplean con fines informativos amparados en el derecho de cita (Art. 32 LPI).</p>
+                <p id="politica-privacidad" style="margin-bottom: 0.5rem;"><strong style="color:#e2e8f0;">Política de Privacidad y Protección de Datos (RGPD / LOPDGDD):</strong> Tus respuestas al cuestionario y los datos introducidos en la calculadora económica se procesan 100% en local en tu navegador y nunca se almacenan ni envían a servidores externos. Responsable y ejercicio de derechos ARCO: <a href="mailto:contacto@elecciones29ntest.es" style="color:#93c5fd;">contacto@elecciones29ntest.es</a>.</p>
+                <p id="politica-cookies" style="margin-bottom: 0;"><strong style="color:#e2e8f0;">Política de Cookies y Publicidad de Terceros (Google AdSense):</strong> Este sitio web utiliza cookies técnicas propias y servicios publicitarios de terceros provistos por <strong>Google AdSense (Google LLC)</strong>, que pueden emplear cookies (como la cookie DART / DoubleClick) para publicar anuncios basados en las visitas previas de los usuarios a este u otros sitios web en Internet. Los usuarios pueden gestionar o inhabilitar el uso de la publicidad personalizada en cualquier momento desde el panel <em>Configurar Cookies</em> o en la Configuración de Anuncios de Google.</p>
             </div>
         </footer>
 
@@ -4101,11 +4084,8 @@
             </div>
 
             <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: space-between; align-items: center; margin-top: 1rem;">
-                <button class="btn-pay" style="flex: 1 1 280px;" onclick="proceedToDonationPayment()">
+                <button class="btn-pay" id="btn-generate-pdf" style="flex: 1 1 280px;" onclick="proceedToDonationPayment()">
                     ❤️ Aportar 1,00 € para ayudar a la página y Descargar PDF
-                </button>
-                <button class="btn-secondary" id="btn-generate-pdf" onclick="unlockAndDownloadDemoPDF()" style="font-size:0.78rem;">
-                    🛠️ Simular Aportación 1€ y Desbloquear Todo (Modo Creador)
                 </button>
             </div>
         </div>
@@ -4116,21 +4096,11 @@
         <div class="modal-box" onclick="event.stopPropagation()" style="text-align: center; max-width: 480px;">
             <button class="modal-close" onclick="closeDownloadModal()">✕ Cerrar</button>
             
-            <div id="photo-ad-wait">
-                <div class="countdown-ring" id="photo-countdown-num">10s</div>
-                <h3 style="font-size: 1.25rem; margin-bottom: 0.3rem;">Generando tu tarjeta en Alta Calidad...</h3>
-                <p style="color: var(--muted); font-size: 0.85rem;">Tu imagen estará lista al finalizar el anuncio.</p>
-                <div class="ad-interstitial-box">
-                    <span class="ad-label">Publicidad Patrocinada</span>
-                    <div class="ad-video-placeholder">
-                        <span style="font-size: 2rem;">🎬</span>
-                        <strong>[Google AdSense Vídeo / Imagen]</strong>
-                        <span>Desbloqueando descarga gratuita...</span>
-                    </div>
-                </div>
+            <div id="photo-ad-wait" style="display: none;">
+                <div class="countdown-ring" id="photo-countdown-num">✓</div>
             </div>
 
-            <div id="photo-ready-view" style="display: none;">
+            <div id="photo-ready-view" style="display: block;">
                 <h3 style="color: var(--primary); margin-bottom: 0.3rem;">✅ ¡Tu tarjeta de resultado está lista!</h3>
                 <p style="font-size: 0.8rem; color: var(--muted); margin-bottom: 0.75rem;">
                     Pulsa el botón inferior o <strong>mantén pulsada la imagen</strong> para guardarla en Fotos.
@@ -4396,9 +4366,10 @@
         function returnToLanding() {
             if (adTimerInterval) clearInterval(adTimerInterval);
             document.body.classList.remove("quiz-fullscreen-mode");
-            document.getElementById("app-shell").style.display = "none";
+            document.getElementById("app-shell").style.display = "block";
             document.getElementById("view-landing").style.display = "flex";
             document.body.classList.add("landing-lock");
+            window.scrollTo({ top: 0, behavior: "smooth" });
         }
 
         function exitFullscreenQuizToHome() {
@@ -4409,32 +4380,12 @@
 
         function runTenSecondAdScreen(titleText, subtitleText, onCompleteCallback) {
             if (adTimerInterval) clearInterval(adTimerInterval);
-            document.body.classList.add("quiz-fullscreen-mode");
-
             document.getElementById("start-screen").style.display = "none";
             document.getElementById("quiz-view").style.display = "none";
             document.getElementById("results-section").style.display = "none";
-
             const adScreen = document.getElementById("loading-ad-screen");
-            document.getElementById("loading-ad-title").innerText = titleText;
-            document.getElementById("loading-ad-subtitle").innerText = subtitleText;
-            adScreen.style.display = "block";
-
-            let secondsLeft = 10;
-            document.getElementById("ad-countdown-number").innerText = secondsLeft + "s";
-            document.getElementById("ad-seconds-inline").innerText = secondsLeft;
-
-            adTimerInterval = setInterval(() => {
-                secondsLeft--;
-                document.getElementById("ad-countdown-number").innerText = secondsLeft + "s";
-                document.getElementById("ad-seconds-inline").innerText = secondsLeft;
-
-                if (secondsLeft <= 0) {
-                    clearInterval(adTimerInterval);
-                    adScreen.style.display = "none";
-                    onCompleteCallback();
-                }
-            }, 1000);
+            if (adScreen) adScreen.style.display = "none";
+            onCompleteCallback();
         }
 
         function initiateQuizWithAd() {
@@ -5175,6 +5126,17 @@
             updateLive29NCountdown();
             setupPocketSliderShield();
             initCookieConsent();
+            try {
+                const defaultPartyBtn = document.querySelector('.party-tab-btn[data-party="PSOE"]');
+                if (typeof renderPartySquares === "function") {
+                    renderPartySquares("PSOE", defaultPartyBtn);
+                }
+            } catch (e) {}
+            try {
+                document.querySelectorAll("ins.adsbygoogle").forEach(() => {
+                    (window.adsbygoogle = window.adsbygoogle || []).push({});
+                });
+            } catch (e) {}
             const params = new URLSearchParams(window.location.search);
             if (params.has("cx") && params.has("cy")) {
                 const cx = parseFloat(params.get("cx")), cy = parseFloat(params.get("cy"));
@@ -6555,22 +6517,10 @@
             generatedStoryDataUrl = generateStoryCanvasDataUrl();
 
             document.getElementById("generated-story-preview").src = generatedStoryDataUrl;
-            document.getElementById("photo-ad-wait").style.display = "block";
-            document.getElementById("photo-ready-view").style.display = "none";
+            const waitBox = document.getElementById("photo-ad-wait");
+            if (waitBox) waitBox.style.display = "none";
+            document.getElementById("photo-ready-view").style.display = "block";
             document.getElementById("downloadPhotoModal").style.display = "flex";
-
-            let sec = 10;
-            document.getElementById("photo-countdown-num").innerText = sec + "s";
-
-            photoAdInterval = setInterval(() => {
-                sec--;
-                document.getElementById("photo-countdown-num").innerText = sec + "s";
-                if (sec <= 0) {
-                    clearInterval(photoAdInterval);
-                    document.getElementById("photo-ad-wait").style.display = "none";
-                    document.getElementById("photo-ready-view").style.display = "block";
-                }
-            }, 1000);
         }
 
         function closeDownloadModal() {
@@ -7404,7 +7354,6 @@
             if (STRIPE_PAYMENT_LINK_URL && STRIPE_PAYMENT_LINK_URL.trim() !== "") {
                 window.location.href = STRIPE_PAYMENT_LINK_URL;
             } else {
-                alert("❤️ APORTACIÓN DE 1,00 € PARA AYUDAR A LA PÁGINA:\n\nCuando pegues tu enlace de Stripe en la constante STRIPE_PAYMENT_LINK_URL, este botón llevará al pago seguro de 1,00 €.\n\nComo estás en modo prueba, se va a desbloquear ahora mismo tu Informe Oficial de Experto en pantalla, tu Carné de Fundador y se descargará el PDF Oficial de 2 páginas A4.");
                 unlockAndDownloadDemoPDF();
             }
         }
