@@ -761,7 +761,7 @@
         /* =========================================================================
            VISTA 1: PROGRAMAS + MODO "VOTO A CIEGAS" (SIN PREJUICIOS)
            ========================================================================= */
-        #view-programs { display: block; margin-bottom: 1.5rem; }
+        #view-programs, #view-quiz, #view-pocket, #view-support { display: block; margin-bottom: 2rem; scroll-margin-top: 88px; }
         .programs-header-box { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 1.5rem; margin-bottom: 1.25rem; box-shadow: var(--shadow); }
         
         .blind-mode-banner {
@@ -849,11 +849,11 @@
         .impact-box { background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; padding: 1rem; border-radius: 12px; margin-top: 1rem; font-size: 0.88rem; }
 
         /* VISTA 2: TEST DE AFINIDAD */
-        #view-quiz { display: none; }
+        #view-quiz { display: block; margin-bottom: 2rem; }
         .quiz-card { background: var(--card); border-radius: 22px; box-shadow: var(--shadow); border: 1px solid var(--border); padding: 2rem; }
         #friend-challenge-alert { display: none; background: linear-gradient(135deg, #7c3aed, #db2777); color: white; padding: 1rem 1.25rem; border-radius: 14px; margin-bottom: 1rem; text-align: center; font-weight: 600; font-size: 0.9rem; }
-        #start-screen { text-align: center; padding: 0.5rem 0; }
-        .region-select-box { max-width: 480px; margin: 1.4rem auto; text-align: left; }
+        #start-screen { text-align: center; padding: 0.25rem 0 1.25rem; margin-bottom: 1.25rem; border-bottom: 1px solid var(--border); }
+        .region-select-box { max-width: 480px; margin: 1rem auto 0; text-align: left; }
         .region-select-box label { display: block; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.92rem; }
         .region-select { width: 100%; padding: 0.9rem; border-radius: 12px; border: 2px solid var(--border); background: var(--card-alt); color: var(--text); font-size: 0.93rem; font-weight: 600; }
 
@@ -862,7 +862,7 @@
         }
 
         #quiz-view {
-            display: none;
+            display: flex;
             flex-direction: column;
             gap: 0.95rem;
         }
@@ -3251,14 +3251,14 @@
                         <!-- 1. CONFIGURACIÓN INICIAL -->
                         <div id="start-screen">
                             <span class="topic-tag">Test Oficial Elecciones 29 Noviembre • 30 Preguntas</span>
-                            <h2 style="font-size: 1.65rem; margin-top: 0.7rem;">¿En qué Comunidad Autónoma votas el 29N?</h2>
-                            <p style="color: var(--muted); font-size: 0.92rem; max-width: 540px; margin: 0.5rem auto 0;">
-                                Analizamos todos los partidos nacionales (PSOE, PP, VOX, SUMAR, PODEMOS, SALF y PACMA) más los partidos propios de tu Comunidad:
+                            <h2 style="font-size: 1.65rem; margin-top: 0.7rem;">🗳️ Test de Afinidad Electoral 29N (30 Preguntas)</h2>
+                            <p style="color: var(--muted); font-size: 0.92rem; max-width: 560px; margin: 0.5rem auto 0;">
+                                Selecciona tu Comunidad Autónoma y responde directamente a las 30 cuestiones oficiales para calcular tu afinidad con PSOE, PP, VOX, SUMAR, PODEMOS, SALF, PACMA y partidos autonómicos:
                             </p>
 
                             <div class="region-select-box">
                                 <label for="region-selector">📍 Selecciona tu circunscripción:</label>
-                                <select id="region-selector" class="region-select">
+                                <select id="region-selector" class="region-select" onchange="selectedRegion = this.value; renderQuestion();">
                                     <option value="general">Resto de España (PSOE, PP, VOX, SUMAR, PODEMOS, SALF, PACMA)</option>
                                     <option value="cat">Cataluña (+ ERC y Junts per Catalunya)</option>
                                     <option value="eus">País Vasco (+ EAJ-PNV y EH Bildu)</option>
@@ -3267,10 +3267,6 @@
                                     <option value="can">Canarias (+ Coalición Canaria)</option>
                                 </select>
                             </div>
-
-                            <button class="btn-primary-large" onclick="initiateQuizWithAd()">
-                                Comenzar el Test (30 Preguntas) →
-                            </button>
                         </div>
 
                         <!-- 2. PANTALLA DE TRANSICIÓN DEL TEST -->
@@ -3288,7 +3284,7 @@
                         <!-- 3. PREGUNTAS DEL TEST -->
                         <div id="quiz-view">
                             <div class="quiz-top-bar">
-                                <button class="btn-secondary" onclick="exitFullscreenQuizToHome()" style="padding: 0.3rem 0.65rem; font-size: 0.75rem;">✕ Salir</button>
+                                <button class="btn-secondary" onclick="restartQuiz()" style="padding: 0.3rem 0.65rem; font-size: 0.75rem;">↺ Reiniciar</button>
                                 <span id="question-counter" style="font-weight: 800; font-size: 0.88rem; color: var(--muted);">Pregunta 1 de 30</span>
                                 <span id="question-topic" class="topic-tag">Vivienda</span>
                             </div>
@@ -3529,7 +3525,7 @@
                 </section>
 
                 <!-- VISTA 3: SIMULADOR DEDICADO DE IMPACTO EN TU BOLSILLO (MODO RÁPIDO VS. REAL) -->
-                <section id="view-pocket" style="display: none;">
+                <section id="view-pocket" style="display: block; margin-bottom: 1.5rem;">
                     <div class="pocket-page-card">
                         <div class="pocket-header-banner">
                             <span class="topic-tag">💶 Simulador Fiscal y Económico 29N • Modelo Real vs. Rápido</span>
@@ -3540,7 +3536,7 @@
                         </div>
 
                         <!-- CONDICIÓN 1: GANCHO / PUERTA DE ENTRADA (SI AÚN NO HA HECHO EL TEST) -->
-                        <div id="pocket-gate-card" class="pocket-gate-card">
+                        <div id="pocket-gate-card" class="pocket-gate-card" style="display: none;">
                             <div class="pocket-gate-badge">🔒 Simulación Personalizada Bloqueada</div>
                             <h3 style="font-size: 1.35rem; margin: 0.5rem 0 0.35rem;">Primero necesitamos saber qué partido te representa</h3>
                             <p style="font-size: 0.88rem; color: var(--muted); max-width: 540px; margin: 0 auto 1.25rem; line-height: 1.5;">
@@ -3577,7 +3573,7 @@
                         </div>
 
                         <!-- CONDICIÓN 2: SIMULADOR ACTIVO (CUANDO YA HAY PARTIDO) -->
-                        <div id="pocket-simulator-active" style="display: none;">
+                        <div id="pocket-simulator-active" style="display: block;">
                             <!-- BANNER DE RETORNO CON ÉXITO SI VIENE DE INTENTAR HACER EL CÁLCULO -->
                             <div id="pocket-return-alert" class="pocket-return-alert" style="display: none;">
                                 🎉 <strong>¡Test completado!</strong> Tu mayor afinidad es con <strong id="pocket-return-party-name">...</strong>. Ya puedes simular el impacto en tu nómina y gastos:
@@ -3659,7 +3655,7 @@
                             </div>
 
                             <!-- PANEL 2: SIMULACIÓN REAL (NIVEL PROFESIONAL CON SUELDO NETO Y GASTOS) -->
-                            <div id="pocket-pane-real" class="pocket-pane" style="display: none;">
+                            <div id="pocket-pane-real" class="pocket-pane active" style="display: block; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
                                 <p style="font-size: 0.85rem; color: var(--muted); text-align: center; margin-bottom: 1rem;">
                                     Ajusta tus datos reales para calcular la estimación neta mensual en tu cuenta bancaria:
                                 </p>
@@ -3772,7 +3768,7 @@
                 </section>
 
                 <!-- VISTA 4 (ESPECIAL PC): "¿TE ESTÁ SIRVIENDO LA PÁGINA?" + DOSSIER DE EXPERTO -->
-                <section id="view-support" style="display: none;">
+                <section id="view-support" style="display: block; margin-bottom: 1.5rem;">
                     <div class="support-page-card">
                         <!-- BLOQUE 1: MENSAJE CERCANO, PERSONAL Y PROFESIONAL (PROYECTO DE UN ESTUDIANTE) -->
                         <div class="support-hero-box">
@@ -4283,7 +4279,6 @@
         function enterSection(section) {
             document.body.classList.remove("landing-lock");
             document.body.classList.remove("quiz-fullscreen-mode");
-            document.getElementById("view-landing").style.display = "none";
             document.getElementById("app-shell").style.display = "block";
             updateLive29NCountdown();
 
@@ -4303,11 +4298,14 @@
             const mobQuiz = document.getElementById("mob-btn-quiz");
             const mobPocket = document.getElementById("mob-btn-pocket");
 
+            if (progView) progView.style.display = "block";
+            if (quizView) quizView.style.display = "block";
+            if (pocketView) pocketView.style.display = "block";
+            if (supportView) supportView.style.display = "block";
+
+            let targetEl = progView;
+
             if (section === "programs") {
-                if (progView) progView.style.display = "block";
-                if (quizView) quizView.style.display = "none";
-                if (pocketView) pocketView.style.display = "none";
-                if (supportView) supportView.style.display = "none";
                 if (btnProg) btnProg.classList.add("active");
                 if (btnQuiz) btnQuiz.classList.remove("active");
                 if (btnPocket) btnPocket.classList.remove("active");
@@ -4316,11 +4314,8 @@
                 if (mobQuiz) mobQuiz.classList.remove("active");
                 if (mobPocket) mobPocket.classList.remove("active");
                 renderPartySquares(currentSelectedPartyForSquares, document.querySelector(`.party-tab-btn[data-party="${currentSelectedPartyForSquares}"]`));
+                targetEl = progView;
             } else if (section === "pocket") {
-                if (progView) progView.style.display = "none";
-                if (quizView) quizView.style.display = "none";
-                if (pocketView) pocketView.style.display = "block";
-                if (supportView) supportView.style.display = "none";
                 if (btnPocket) btnPocket.classList.add("active");
                 if (btnProg) btnProg.classList.remove("active");
                 if (btnQuiz) btnQuiz.classList.remove("active");
@@ -4329,11 +4324,8 @@
                 if (mobProg) mobProg.classList.remove("active");
                 if (mobQuiz) mobQuiz.classList.remove("active");
                 updatePocketSimulatorView();
+                targetEl = pocketView;
             } else if (section === "support") {
-                if (progView) progView.style.display = "none";
-                if (quizView) quizView.style.display = "none";
-                if (pocketView) pocketView.style.display = "none";
-                if (supportView) supportView.style.display = "block";
                 if (btnSupport) btnSupport.classList.add("active");
                 if (btnProg) btnProg.classList.remove("active");
                 if (btnQuiz) btnQuiz.classList.remove("active");
@@ -4343,11 +4335,8 @@
                 if (mobPocket) mobPocket.classList.remove("active");
                 if (typeof hideSupportToast === "function") hideSupportToast();
                 if (typeof updateSupportSectionView === "function") updateSupportSectionView();
+                targetEl = supportView;
             } else {
-                if (progView) progView.style.display = "none";
-                if (quizView) quizView.style.display = "block";
-                if (pocketView) pocketView.style.display = "none";
-                if (supportView) supportView.style.display = "none";
                 if (btnQuiz) btnQuiz.classList.add("active");
                 if (btnProg) btnProg.classList.remove("active");
                 if (btnPocket) btnPocket.classList.remove("active");
@@ -4355,12 +4344,12 @@
                 if (mobQuiz) mobQuiz.classList.add("active");
                 if (mobProg) mobProg.classList.remove("active");
                 if (mobPocket) mobPocket.classList.remove("active");
-                const qActive = document.getElementById("quiz-view");
-                if (qActive && qActive.style.display === "flex") {
-                    document.body.classList.add("quiz-fullscreen-mode");
-                }
+                targetEl = quizView;
             }
-            window.scrollTo({ top: 0, behavior: "smooth" });
+
+            if (targetEl) {
+                targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
         }
 
         function returnToLanding() {
@@ -4368,6 +4357,14 @@
             document.body.classList.remove("quiz-fullscreen-mode");
             document.getElementById("app-shell").style.display = "block";
             document.getElementById("view-landing").style.display = "flex";
+            const progView = document.getElementById("view-programs");
+            const quizView = document.getElementById("view-quiz");
+            const pocketView = document.getElementById("view-pocket");
+            const supportView = document.getElementById("view-support");
+            if (progView) progView.style.display = "block";
+            if (quizView) quizView.style.display = "block";
+            if (pocketView) pocketView.style.display = "block";
+            if (supportView) supportView.style.display = "block";
             document.body.classList.add("landing-lock");
             window.scrollTo({ top: 0, behavior: "smooth" });
         }
@@ -5131,6 +5128,15 @@
                 if (typeof renderPartySquares === "function") {
                     renderPartySquares("PSOE", defaultPartyBtn);
                 }
+                if (typeof renderQuestion === "function") {
+                    renderQuestion();
+                }
+                if (typeof updatePocketSimulatorView === "function") {
+                    updatePocketSimulatorView();
+                }
+                if (typeof updateSupportSectionView === "function") {
+                    updateSupportSectionView();
+                }
             } catch (e) {}
             try {
                 document.querySelectorAll("ins.adsbygoogle").forEach(() => {
@@ -5651,18 +5657,19 @@
             const paneQuick = document.getElementById("pocket-pane-quick");
             const paneReal = document.getElementById("pocket-pane-real");
 
+            if (paneQuick) { paneQuick.classList.add("active"); paneQuick.style.display = "block"; }
+            if (paneReal) { paneReal.classList.add("active"); paneReal.style.display = "block"; }
+            runQuickPocketSimulation();
+            runRealPocketSimulation();
+
             if (mode === 'quick') {
                 if (btnQuick) btnQuick.classList.add("active");
                 if (btnReal) btnReal.classList.remove("active");
-                if (paneQuick) { paneQuick.classList.add("active"); paneQuick.style.display = "block"; }
-                if (paneReal) { paneReal.classList.remove("active"); paneReal.style.display = "none"; }
-                runQuickPocketSimulation();
+                if (paneQuick) paneQuick.scrollIntoView({ behavior: "smooth", block: "nearest" });
             } else {
                 if (btnReal) btnReal.classList.add("active");
                 if (btnQuick) btnQuick.classList.remove("active");
-                if (paneReal) { paneReal.classList.add("active"); paneReal.style.display = "block"; }
-                if (paneQuick) { paneQuick.classList.remove("active"); paneQuick.style.display = "none"; }
-                runRealPocketSimulation();
+                if (paneReal) paneReal.scrollIntoView({ behavior: "smooth", block: "nearest" });
             }
         }
 
@@ -5765,7 +5772,7 @@
         }
 
         function updatePocketSimulatorView() {
-            const currentParty = activePocketParty || finalWinnerName;
+            const currentParty = activePocketParty || finalWinnerName || "PSOE";
             const gateCard = document.getElementById("pocket-gate-card");
             const simActive = document.getElementById("pocket-simulator-active");
             const returnAlert = document.getElementById("pocket-return-alert");
@@ -5806,12 +5813,8 @@
             }
 
             setupPocketSliderShield();
-
-            if (pocketMode === 'quick') {
-                runQuickPocketSimulation();
-            } else {
-                runRealPocketSimulation();
-            }
+            runQuickPocketSimulation();
+            runRealPocketSimulation();
         }
 
         function calculatePartyFiscalImpactForUser(partyName, gross, kids, house, houseCost, job) {
@@ -7758,6 +7761,8 @@
             document.getElementById("results-section").style.display = "none";
             document.getElementById("loading-ad-screen").style.display = "none";
             document.getElementById("start-screen").style.display = "block";
+            document.getElementById("quiz-view").style.display = "flex";
+            renderQuestion();
             switchResultsTab('afinidad');
         }
 
